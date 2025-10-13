@@ -1,0 +1,7 @@
+- [x] Add imports for framer-motion and lucide-react
+- [x] Add state for search query and loading
+- [x] Modify fetchPatients to set loading
+- [x] Add filtered patients based on search
+- [x] Update JSX: replace table with card grid, add animations
+- [x] Improve form with icons and slide animation
+- [x] Enhance overall styling for professional look
