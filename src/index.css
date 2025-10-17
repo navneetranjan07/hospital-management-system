@@ -14,3 +14,76 @@
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-in-out;
 }
+
+.hero_bg{
+  background-image: url(assets/backgrounds/hero_bg.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.glass_effect{
+  /* background: rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* Overlay (dark background) */
+.mobile-overlay {
+  position: fixed;
+  top: 1;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 40;
+}
+
+.mobile-overlay.open {
+  width: 100%;
+  visibility: visible;
+}
+
+/* Side menu itself */
+.mobile-menu-side {
+  position: absolute;
+  /* top: 0; */
+  right: 0;
+  width: 70%;
+  max-width: 280px;
+  height: 93vh;
+  background: linear-gradient(145deg, #42a1ff91, #000000);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  /* background: linear-gradient(to bottom right, #1e3a8a, #312e81); */
+  color: black;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mobile-overlay.open .mobile-menu-side {
+  transform: translateX(0);
+}
+
+/* Smooth hover */
+.mobile-menu-side a,
+.mobile-menu-side button {
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-side a:hover,
+.mobile-menu-side button:hover {
+  transform: translateX(-5px);
+}
+

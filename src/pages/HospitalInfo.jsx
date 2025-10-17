@@ -10,9 +10,9 @@ export default function HospitalInfo() {
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       {/* Header Section */}
-      <header className="bg-blue-700 text-white py-10 px-6 text-center">
-        <h1 className="text-4xl font-bold mb-2">CityCare Multispeciality Hospital</h1>
-        <p className="text-lg">Caring for you with compassion, technology, and excellence.</p>
+      <header className="hero_bg text-white py-10 px-6 text-center">
+        <h1 className="text-4xl glass_effect font-bold mb-2">CityCare Multispeciality Hospital</h1>
+        <p className="text-lg glass_effect">Caring for you with compassion, technology, and excellence.</p>
       </header>
 
       {/* About Section */}
@@ -141,7 +141,7 @@ export default function HospitalInfo() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-700 text-white text-center py-6 mt-10">
+      <footer className="main_bg text-white text-center py-6 mt-10">
         <p>&copy; {new Date().getFullYear()} CityCare Multispeciality Hospital. All rights reserved.</p>
       </footer>
     </div>
