@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import EmailVerification from "./pages/auth/EmailVerification";
 import Navbar from "./components/Navbar";
 import Patients from "./pages/Patients";
 import Doctors from "./pages/Doctors";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+ <Route path="/email-verification" element={<EmailVerification />} />
 
         {/* Protected routes */}
         <Route

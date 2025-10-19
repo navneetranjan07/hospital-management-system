@@ -10,7 +10,8 @@ export default function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,64 +34,89 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Hospital Login</h2>
-        {error && <p className="text-red-500 text-center mb-3">{error}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Username */}
-          <div className="relative">
-            <FaUser className="absolute top-3 left-3 text-gray-400" />
-            <input
-              type="text"
-              name="username"
-              value={form.username}
-              onChange={handleChange}
-              placeholder="Username"
-              className="w-full border p-3 pl-10 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-              required
+    <div className="flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat hero_bg">
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
+
+     
+        <div className="relative z-10 bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl shadow-2xl p-8 w-[90%] sm:w-[400px] animate-fadeIn">
+          {/* Logo + Title */}
+          <div className="flex flex-col items-center mb-6">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2966/2966488.png"
+              alt="Hospital Logo"
+              className="w-16 h-16 mb-3"
             />
+            <h2 className="text-3xl font-bold text-gray-800 drop-shadow-sm">
+              Hospital Login
+            </h2>
           </div>
 
-          {/* Password */}
-          <div className="relative">
-            <FaLock className="absolute top-3 left-3 text-gray-400" />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="Password"
-              className="w-full border p-3 pl-10 pr-10 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-              required
-            />
+          {error && (
+            <p className="text-red-500 text-center mb-3 bg-white/40 py-2 rounded-lg">
+              {error}
+            </p>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Username */}
+            <div className="relative">
+              <FaUser className="absolute top-3.5 left-3 text-gray-500" />
+              <input
+                type="text"
+                name="username"
+                value={form.username}
+                onChange={handleChange}
+                placeholder="Username"
+                className="w-full bg-white/70 border border-gray-300 p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                required
+              />
+            </div>
+
+            {/* Password */}
+            <div className="relative">
+              <FaLock className="absolute top-3.5 left-3 text-gray-500" />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Password"
+                className="w-full bg-white/70 border border-gray-300 p-3 pl-10 pr-10 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                required
+              />
+              <button
+                type="button"
+                className="absolute top-3.5 right-3 text-gray-500 hover:text-gray-700"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+
             <button
-              type="button"
-              className="absolute top-3 right-3 text-gray-500"
-              onClick={() => setShowPassword(!showPassword)}
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all duration-300"
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {loading ? "Logging in..." : "Login"}
             </button>
+          </form>
+
+          <div className="flex justify-between mt-5 text-sm text-gray-700">
+            <Link
+              to="/forgot-password"
+              className="hover:text-blue-600 hover:underline transition"
+            >
+              Forgot Password?
+            </Link>
+            <Link
+              to="/register"
+              className="hover:text-blue-600 hover:underline transition"
+            >
+              Register
+            </Link>
           </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
-
-        <div className="flex justify-between mt-4 text-sm">
-          <Link to="/forgot-password" className="text-blue-600 hover:underline">
-            Forgot Password?
-          </Link>
-          <Link to="/register" className="text-blue-600 hover:underline">
-            Register
-          </Link>
         </div>
       </div>
-    </div>
   );
 }
