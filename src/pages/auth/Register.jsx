@@ -4,7 +4,7 @@ import axios from "axios";
 import { FaUser, FaLock } from "react-icons/fa";
 
 export default function Register() {
-  const [form, setForm] = useState({ username: "", password: "", email: "" });
+  const [form, setForm] = useState({ username: "", password: "", id: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -74,6 +74,19 @@ export default function Register() {
               name="password"
               placeholder="Password"
               value={form.password}
+              onChange={handleChange}
+              required
+              className="w-full bg-white/70 border border-gray-300 p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div className="relative">
+            <FaUser className="absolute top-3.5 left-3 text-gray-500" />
+            <input
+              type="text"
+              name="id"
+              placeholder="Phone Number"
+              value={form.id}
               onChange={handleChange}
               required
               className="w-full bg-white/70 border border-gray-300 p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"

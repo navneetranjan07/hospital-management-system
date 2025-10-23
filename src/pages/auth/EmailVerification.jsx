@@ -16,7 +16,7 @@ export default function EmailVerification() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:8787/userss/send-otp", { email });
+      await axios.post("http://localhost:8787/otp/send", { email });
       setOtpSent(true);
       setMessage("OTP sent successfully to your email!");
     } catch {
@@ -31,7 +31,7 @@ export default function EmailVerification() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8787/userss/verify-otp", {
+      const res = await axios.post("http://localhost:8787/otp/verify", {
         email,
         otp,
       });
