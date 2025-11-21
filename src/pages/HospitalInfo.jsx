@@ -64,7 +64,7 @@ export default function HospitalInfo() {
       </header>
 
       {/* About Section */}
-      <section className="py-16 px-6 md:px-16 bg-white shadow-lg">
+      <section className="py-16 px-6 md:px-16 bg-white shadow-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -116,11 +116,11 @@ export default function HospitalInfo() {
       </section>
 
       {/* Mission and Vision */}
-      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50">
+      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '0.4s' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-blue-700 mb-12">Our Mission & Vision</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-blue-100/50">
+            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50">
               <div className="flex items-center justify-center mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,11 +130,11 @@ export default function HospitalInfo() {
               </div>
               <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Mission</h3>
               <p className="text-gray-700 leading-relaxed text-lg">
-                To deliver quality and compassionate healthcare with integrity and innovation, 
+                To deliver quality and compassionate healthcare with integrity and innovation,
                 ensuring the best outcomes for every patient we serve.
               </p>
             </div>
-            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-blue-100/50">
+            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50">
               <div className="flex items-center justify-center mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +144,7 @@ export default function HospitalInfo() {
               </div>
               <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Vision</h3>
               <p className="text-gray-700 leading-relaxed text-lg">
-                To be a trusted global leader in healthcare excellence, advancing medical research 
+                To be a trusted global leader in healthcare excellence, advancing medical research
                 and providing accessible, affordable, and ethical care to all.
               </p>
             </div>
@@ -153,7 +153,7 @@ export default function HospitalInfo() {
       </section>
 
       {/* Departments */}
-      <section className="py-16 px-6 md:px-16 bg-white">
+      <section className="py-16 px-6 md:px-16 bg-white animate-fadeIn" style={{ animationDelay: '0.6s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-8 text-center">Departments & Specialties</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -170,8 +170,8 @@ export default function HospitalInfo() {
             ].map((dept, index) => (
               <div
                 key={dept.name}
-                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 animate-fadeIn"
+                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
                 <div className="text-4xl mb-4 text-center">{dept.icon}</div>
                 <h3 className="text-xl font-bold text-blue-800 mb-2 text-center">{dept.name}</h3>
@@ -186,7 +186,7 @@ export default function HospitalInfo() {
       </section>
 
       {/* Doctors */}
-      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50">
+      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '1.4s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Meet Our Doctors</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -200,8 +200,8 @@ export default function HospitalInfo() {
             ].map((doc, i) => (
               <div
                 key={i}
-                className="group bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 hover:border-blue-100/50 relative overflow-hidden"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className="group bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 hover:border-blue-100/50 relative overflow-hidden animate-fadeIn"
+                style={{ animationDelay: `${1.6 + i * 0.1}s` }}
               >
                 <div className="relative mb-6">
                   <img

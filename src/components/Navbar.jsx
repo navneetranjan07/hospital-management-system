@@ -25,10 +25,18 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <FaUserMd className="text-2xl" />
-            <h1 className="text-xl cursor-pointer font-semibold tracking-wide">
-              <Link to="/home">CityCare Hospital</Link>
-            </h1>
+            <FaUserMd className="text-2xl text-teal-300" />
+            <div>
+              <h1 className="text-xl cursor-pointer font-semibold tracking-wide">
+                <Link to="/home">CityCare Hospital</Link>
+              </h1>
+              <p className="text-sm text-teal-200 opacity-80">Your Health, Our Priority</p>
+            </div>
+            {localStorage.getItem("username") && (
+              <span className="hidden md:block text-sm bg-white/10 px-3 py-1 rounded-full ml-4">
+                Welcome, {localStorage.getItem("username")}!
+              </span>
+            )}
           </div>
 
           {/* Desktop Menu */}
@@ -61,7 +69,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-2xl focus:outline-none"
+            className="md:hidden text-2xl focus:outline-none hover:text-teal-300 transition-colors duration-300"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
@@ -72,24 +80,33 @@ export default function Navbar() {
       {/* Mobile Side Menu Overlay */}
       <div className={`mobile-overlay ${menuOpen ? "open" : ""}`}>
         <div className="mobile-menu-side">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold text-white">Menu</h2>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:text-teal-300 transition-colors duration-300"
+            >
+              <FaTimes size={20} />
+            </button>
+          </div>
           <Link
             to="/patients"
             onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-3 hover:text-blue-200 transition text-lg"
+            className="flex items-center gap-3 text-white hover:text-teal-300 transition-all duration-300 text-lg py-3 px-4 rounded-lg"
           >
             <FaUserInjured /> Patients
           </Link>
           <Link
             to="/doctors"
             onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-3 hover:text-blue-200 transition text-lg"
+            className="flex items-center gap-3 text-white hover:text-teal-300 transition-all duration-300 text-lg py-3 px-4 rounded-lg"
           >
             <FaUserMd /> Doctors
           </Link>
           <Link
             to="/appointments"
             onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-3 hover:text-blue-200 transition text-lg"
+            className="flex items-center gap-3 text-white hover:text-teal-300 transition-all duration-300 text-lg py-3 px-4 rounded-lg"
           >
             <FaCalendarAlt /> Appointments
           </Link>
@@ -98,7 +115,7 @@ export default function Navbar() {
               handleLogout();
               setMenuOpen(false);
             }}
-            className="flex items-center gap-3 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg mt-4 transition"
+            className="flex items-center gap-3 bg-gradient-to-r  from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 px-6 py-3 rounded-xl mt-6 transition-all duration-300 hover:scale-105 font-medium w-full justify-center"
           >
             <FaSignOutAlt /> Logout
           </button>
