@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pencil, Trash2, Plus, X } from "lucide-react";
+import { ClipLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
@@ -15,6 +17,8 @@ export default function Appointments() {
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const baseUrl = "http://localhost:8787/appointments";
 
@@ -25,11 +29,15 @@ export default function Appointments() {
   }, []);
 
   const fetchAppointments = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(baseUrl);
       setAppointments(res.data);
     } catch (err) {
+      toast.error("Failed to fetch appointments. Please try again.");
       console.error("Error fetching appointments:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -63,8 +71,17 @@ export default function Appointments() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this appointment?")) {
-      await axios.delete(`${baseUrl}/${id}`);
-      fetchAppointments();
+      setSubmitting(true);
+      try {
+        await axios.delete(`${baseUrl}/${id}`);
+        toast.success("Appointment deleted successfully!");
+        fetchAppointments();
+      } catch (err) {
+        toast.error("Failed to delete appointment. Please try again.");
+        console.error("Error deleting appointment:", err);
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 

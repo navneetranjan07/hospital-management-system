@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pencil, Trash2, Plus, X } from "lucide-react";
+import { ClipLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 export default function Doctors() {
   const [doctors, setDoctors] = useState([]);
@@ -13,6 +15,8 @@ export default function Doctors() {
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const baseUrl = "http://localhost:8787/doctors";
 
@@ -21,11 +25,15 @@ export default function Doctors() {
   }, []);
 
   const fetchDoctors = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(baseUrl);
       setDoctors(res.data);
     } catch (err) {
+      toast.error("Failed to fetch doctors. Please try again.");
       console.error("Error fetching doctors:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,8 +62,17 @@ export default function Doctors() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this doctor?")) {
-      await axios.delete(`${baseUrl}/${id}`);
-      fetchDoctors();
+      setSubmitting(true);
+      try {
+        await axios.delete(`${baseUrl}/${id}`);
+        toast.success("Doctor deleted successfully!");
+        fetchDoctors();
+      } catch (err) {
+        toast.error("Failed to delete doctor. Please try again.");
+        console.error("Error deleting doctor:", err);
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -130,51 +147,58 @@ export default function Doctors() {
       )}
 
       {/* 🧍‍♂️ Doctors Table */}
-      <div className="overflow-x-auto bg-white shadow-lg rounded-2xl border border-gray-100">
-        <table className="w-full text-center">
-          <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 uppercase text-sm">
-            <tr>
-              <th className="p-3">ID</th>
-              <th className="p-3">Name</th>
-              <th className="p-3">Specialization</th>
-              <th className="p-3">Phone</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredDoctors.length > 0 ? (
-              filteredDoctors.map((d) => (
-                <tr key={d.id} className="border-t hover:bg-gray-50 transition">
-                  <td className="p-3">{d.id}</td>
-                  <td className="p-3 font-medium">{d.name}</td>
-                  <td className="p-3">{d.specialization}</td>
-                  <td className="p-3">{d.phone}</td>
-                  <td className="p-3 flex justify-center gap-3">
-                    <button
-                      onClick={() => handleEdit(d)}
-                      className="flex items-center gap-1 bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-lg shadow transition"
-                    >
-                      <Pencil size={16} /> Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(d.id)}
-                      className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg shadow transition"
-                    >
-                      <Trash2 size={16} /> Delete
-                    </button>
+      {loading ? (
+        <div className="flex justify-center items-center py-12">
+          <ClipLoader size={50} color="#3B82F6" />
+        </div>
+      ) : (
+        <div className="overflow-x-auto bg-white shadow-lg rounded-2xl border border-gray-100">
+          <table className="w-full text-center">
+            <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 uppercase text-sm">
+              <tr>
+                <th className="p-3">ID</th>
+                <th className="p-3">Name</th>
+                <th className="p-3">Specialization</th>
+                <th className="p-3">Phone</th>
+                <th className="p-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredDoctors.length > 0 ? (
+                filteredDoctors.map((d) => (
+                  <tr key={d.id} className="border-t hover:bg-gray-50 transition">
+                    <td className="p-3">{d.id}</td>
+                    <td className="p-3 font-medium">{d.name}</td>
+                    <td className="p-3">{d.specialization}</td>
+                    <td className="p-3">{d.phone}</td>
+                    <td className="p-3 flex justify-center gap-3">
+                      <button
+                        onClick={() => handleEdit(d)}
+                        className="flex items-center gap-1 bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-lg shadow transition"
+                      >
+                        <Pencil size={16} /> Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(d.id)}
+                        disabled={submitting}
+                        className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg shadow transition disabled:opacity-50"
+                      >
+                        <Trash2 size={16} /> Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="p-6 text-gray-500">
+                    No doctors found.
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="p-6 text-gray-500">
-                  No doctors found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
