@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Ananya from "../assets/doctors/Ananya-Sharma.jpg";
 import Rajesh from "../assets/doctors/Rajesh-Mehta.jpg";
@@ -7,10 +7,23 @@ import Arjun from "../assets/doctors/Arjun-Singh.jpg";
 import Sneha from "../assets/doctors/Sneha-Verma.jpg";
 import Ravi from "../assets/doctors/Ravi-Patel.jpg";
 
-import { FaInstagram, FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 
 export default function HospitalInfo() {
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({ name: '', email: '', message: '' });
+  };
 
   const handleDepartmentClick = (departmentName) => {
     const dept_info = departmentName.toLowerCase().replace(/\s+/g, '-');
@@ -300,6 +313,70 @@ export default function HospitalInfo() {
                 loading="lazy"
               ></iframe>
             </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-blue-700 mb-6 text-center">Get In Touch</h3>
+            <form className="max-w-md mx-auto bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-2xl shadow-xl border border-blue-100/50 backdrop-blur-sm">
+              <div className="mb-6 relative">
+                <label htmlFor="name" className="block text-gray-700 font-semibold mb-3 flex items-center">
+                  <FaUser className="w-4 h-4 mr-2 text-blue-600" />
+                  Name
+                </label>
+                <div className="relative">
+                  <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mb-6 relative">
+                <label htmlFor="email" className="block text-gray-700 font-semibold mb-3 flex items-center">
+                  <FaEnvelope className="w-4 h-4 mr-2 text-teal-600" />
+                  Email
+                </label>
+                <div className="relative">
+                  <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mb-8 relative">
+                <label htmlFor="message" className="block text-gray-700 font-semibold mb-3 flex items-center">
+                  <FaComment className="w-4 h-4 mr-2 text-blue-600" />
+                  Message
+                </label>
+                <div className="relative">
+                  <FaComment className="absolute left-3 top-3 text-gray-400 w-4 h-4" />
+                  <textarea
+                    id="message"
+                    rows="4"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300 resize-none"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </section>
