@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { FaUser, FaLock, FaEye, FaEyeSlash, FaSpinner, FaGoogle, FaFacebook } from "react-icons/fa";
+import heroBg from "../../assets/backgrounds/hero_bg.jpg";
+import { FaUser, FaLock, FaEye, FaEyeSlash, FaSpinner, FaGoogle, FaFacebook, FaStethoscope, FaHospital } from "react-icons/fa";
 
 export default function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -43,17 +44,23 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 animate-gradient-x">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm"></div>
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
-      <div className="relative z-10 bg-white/80 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl p-6 sm:p-8 w-[90%] sm:w-[420px] animate-fadeIn">
+      <div className="relative z-10 bg-white/95 backdrop-blur-xl border border-white/70 rounded-2xl shadow-2xl p-6 sm:p-8 w-[90%] sm:w-[420px] animate-fadeIn">
         {/* Logo + Title */}
         <div className="flex flex-col items-center mb-6">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/2966/2966488.png"
-            alt="Hospital Logo"
-            className="w-16 h-16 mb-3 hover:scale-110 transition-transform duration-300 hover:shadow-lg rounded-full"
-          />
+          <div className="relative">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2966/2966488.png"
+              alt="Hospital Logo"
+              className="w-16 h-16 mb-3 hover:scale-110 transition-transform duration-300 hover:shadow-lg rounded-full"
+            />
+            <FaStethoscope className="absolute -top-2 -right-2 text-blue-500 text-xl animate-pulse" />
+          </div>
           <h2 className="text-3xl font-bold text-gray-800 drop-shadow-md">
             Hospital Login
           </h2>
