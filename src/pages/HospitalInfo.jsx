@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Ananya from "../assets/doctors/Ananya-Sharma.jpg";
 import Rajesh from "../assets/doctors/Rajesh-Mehta.jpg";
 import Priya from "../assets/doctors/Priya-Nair.jpg";
@@ -9,6 +10,13 @@ import Ravi from "../assets/doctors/Ravi-Patel.jpg";
 import { FaInstagram, FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 export default function HospitalInfo() {
+  const navigate = useNavigate();
+
+  const handleDepartmentClick = (departmentName) => {
+    const dept_info = departmentName.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/departments/${dept_info}`);
+  };
+
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       {/* Header Section */}
@@ -21,7 +29,7 @@ export default function HospitalInfo() {
               <svg className="w-5 h-5 text-teal-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <span className="text-teal-100 font-medium">Leading Healthcare Excellence Since 2025</span>
+              <span className="text-teal-100 font-medium">Leading Healthcare Excellence Since 2000</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">CityCare</span>
@@ -170,7 +178,8 @@ export default function HospitalInfo() {
             ].map((dept, index) => (
               <div
                 key={dept.name}
-                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 animate-fadeIn"
+                onClick={() => handleDepartmentClick(dept.name)}
+                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 animate-fadeIn cursor-pointer"
                 style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
                 <div className="text-4xl mb-4 text-center">{dept.icon}</div>

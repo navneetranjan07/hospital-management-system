@@ -8,6 +8,15 @@ import Patients from "./pages/Patients";
 import Doctors from "./pages/Doctors";
 import Appointments from "./pages/Appointments";
 import HospitalInfo from "./pages/HospitalInfo"
+import Cardiology from "./pages/departments/Cardiology";
+import Neurology from "./pages/departments/Neurology";
+import Orthopedics from "./pages/departments/Orthopedics";
+import Oncology from "./pages/departments/Oncology";
+import Pediatrics from "./pages/departments/Pediatrics";
+import Dermatology from "./pages/departments/Dermatology";
+import Gynecology from "./pages/departments/Gynecology";
+import EmergencyMedicine from "./pages/departments/EmergencyMedicine";
+import Urology from "./pages/departments/Urology";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -33,6 +42,15 @@ function App() {
                   <Route path="/patients" element={<Patients />} />
                   <Route path="/doctors" element={<Doctors />} />
                   <Route path="/appointments" element={<Appointments />} />
+                  <Route path="/departments/cardiology" element={<Cardiology />} />
+                  <Route path="/departments/neurology" element={<Neurology />} />
+                  <Route path="/departments/orthopedics" element={<Orthopedics />} />
+                  <Route path="/departments/oncology" element={<Oncology />} />
+                  <Route path="/departments/pediatrics" element={<Pediatrics />} />
+                  <Route path="/departments/dermatology" element={<Dermatology />} />
+                  <Route path="/departments/gynecology" element={<Gynecology />} />
+                  <Route path="/departments/emergency-medicine" element={<EmergencyMedicine />} />
+                  <Route path="/departments/urology" element={<Urology />} />
                 </Routes>
               </>
             </ProtectedRoute>
