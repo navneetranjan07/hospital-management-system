@@ -1,3 +1,1 @@
-- [x] Redesign Login.jsx with two-section layout: left welcome/info, right login form
-- [x] Ensure responsive design (stack on mobile)
-- [x] Test functionality remains intact
+- [ ] Update ForgotPassword.jsx to match Register.jsx layout: add left welcome panel and adjust right form section to dark theme
