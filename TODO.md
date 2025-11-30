@@ -1,10 +1,8 @@
-# TODO: Add Scroll Animations to Homepage (HospitalInfo.jsx)
+# TODO: Add Scroll Animations to HospitalInfo.jsx
 
-1. Import Framer Motion components (motion, useInView, useAnimation) in HospitalInfo.jsx ✓
-2. Add scroll-triggered animation to Header Section
-3. Add scroll-triggered animation to About Section ✓
-4. Add scroll-triggered animation to Mission and Vision Section
-5. Add scroll-triggered animation to Departments Section
-6. Add scroll-triggered animation to Doctors Section
-7. Add scroll-triggered animation to Contact Section
-8. Test animations by running `npm run dev` and verifying in browser
+- [ ] Import `motion` from `framer-motion` in HospitalInfo.jsx
+- [ ] Define reusable animation variants (e.g., fadeInUp for slide-up effect)
+- [ ] Wrap all major sections (About, Mission & Vision, Departments, Doctors, Contact, Footer) with `motion.div` for slide-up on scroll
+- [ ] Add staggered animations for grid items (Departments cards, Doctors profiles)
+- [ ] Test animations by running `npm run dev` and scrolling through the page
+- [ ] Verify no layout shifts or performance issues; adjust if needed

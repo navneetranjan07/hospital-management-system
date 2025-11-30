@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import Ananya from "../assets/doctors/Ananya-Sharma.jpg";
 import Rajesh from "../assets/doctors/Rajesh-Mehta.jpg";
 import Priya from "../assets/doctors/Priya-Nair.jpg";
@@ -28,6 +29,34 @@ export default function HospitalInfo() {
   const handleDepartmentClick = (departmentName) => {
     const dept_info = departmentName.toLowerCase().replace(/\s+/g, '-');
     navigate(`/departments/${dept_info}`);
+  };
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const containerVariants = {
+    initial: { opacity: 0 },
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    },
+    viewport: { once: true }
+  };
+
+  const childVariants = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
   };
 
   return (
@@ -85,7 +114,10 @@ export default function HospitalInfo() {
       </header>
 
       {/* About Section */}
-      <section className="py-8 md:py-16 px-4 md:px-16 bg-white shadow-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+      <motion.section
+        className="py-8 md:py-16 px-4 md:px-16 bg-white shadow-lg"
+        {...fadeInUp}
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -134,14 +166,20 @@ export default function HospitalInfo() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission and Vision */}
-      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+      <motion.section
+        className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50"
+        {...fadeInUp}
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-blue-700 mb-12">Our Mission & Vision</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50">
+            <motion.div
+              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
+              {...childVariants}
+            >
               <div className="flex items-center justify-center mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,8 +192,11 @@ export default function HospitalInfo() {
                 To deliver quality and compassionate healthcare with integrity and innovation,
                 ensuring the best outcomes for every patient we serve.
               </p>
-            </div>
-            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50">
+            </motion.div>
+            <motion.div
+              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
+              {...childVariants}
+            >
               <div className="flex items-center justify-center mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,16 +209,22 @@ export default function HospitalInfo() {
                 To be a trusted global leader in healthcare excellence, advancing medical research
                 and providing accessible, affordable, and ethical care to all.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Departments */}
-      <section className="py-16 px-6 md:px-16 bg-white animate-fadeIn" style={{ animationDelay: '0.6s' }}>
+      <motion.section
+        className="py-16 px-6 md:px-16 bg-white"
+        {...fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-8 text-center">Departments & Specialties</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          <motion.div
+            className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
+            {...containerVariants}
+          >
             {[
               { name: "Cardiology", icon: "❤️" },
               { name: "Neurology", icon: "🧠" },
@@ -189,11 +236,11 @@ export default function HospitalInfo() {
               { name: "Urology", icon: "🩺" },
               { name: "Emergency Medicine", icon: "🚑" },
             ].map((dept, index) => (
-              <div
+              <motion.div
                 key={dept.name}
                 onClick={() => handleDepartmentClick(dept.name)}
-                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 animate-fadeIn cursor-pointer"
-                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
+                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 cursor-pointer"
+                {...childVariants}
               >
                 <div className="text-4xl mb-4 text-center">{dept.icon}</div>
                 <h3 className="text-xl font-bold text-blue-800 mb-2 text-center">{dept.name}</h3>
@@ -201,17 +248,23 @@ export default function HospitalInfo() {
                   Our {dept.name.toLowerCase()} department is equipped with advanced facilities and
                   experienced specialists providing world-class care.
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Doctors */}
-      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '1.4s' }}>
+      <motion.section
+        className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50"
+        {...fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Meet Our Doctors</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
+          <motion.div
+            className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+            {...containerVariants}
+          >
             {[
               { name: "Dr. Ananya Sharma", specialty: "Cardiologist", image: Ananya, color: "from-red-500 to-pink-500" },
               { name: "Dr. Rajesh Mehta", specialty: "Neurologist", image: Rajesh, color: "from-purple-500 to-indigo-500" },
@@ -220,10 +273,10 @@ export default function HospitalInfo() {
               { name: "Dr. Sneha Verma", specialty: "Pediatrician", image: Sneha, color: "from-blue-500 to-cyan-500" },
               { name: "Dr. Ravi Patel", specialty: "Dermatologist", image: Ravi, color: "from-indigo-500 to-purple-500" },
             ].map((doc, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="group bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 hover:border-blue-100/50 relative overflow-hidden animate-fadeIn"
-                style={{ animationDelay: `${1.6 + i * 0.1}s` }}
+                className="group bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 hover:border-blue-100/50 relative overflow-hidden"
+                {...childVariants}
               >
                 <div className="relative mb-6">
                   <img
@@ -244,11 +297,11 @@ export default function HospitalInfo() {
                 <p className="text-gray-600 mt-2 text-sm leading-relaxed">
                   Expert in {doc.specialty.toLowerCase()} with years of experience providing compassionate care.
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
       <section className="py-16 px-6 md:px-16 bg-white">
