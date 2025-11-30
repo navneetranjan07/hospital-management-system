@@ -7,6 +7,7 @@ import Priya from "../assets/doctors/Priya-Nair.jpg";
 import Arjun from "../assets/doctors/Arjun-Singh.jpg";
 import Sneha from "../assets/doctors/Sneha-Verma.jpg";
 import Ravi from "../assets/doctors/Ravi-Patel.jpg";
+import { Link } from "react-router-dom";
 
 import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 
@@ -84,7 +85,7 @@ export default function HospitalInfo() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base">
-              Book Appointment
+             <Link to="/appointments">Book Appointment</Link>
             </button>
             <button className="border-2 border-white/30 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base">
               Learn More

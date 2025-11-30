@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
- <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/email-verification" element={<EmailVerification />} />
 
         {/* Protected routes */}
         <Route
