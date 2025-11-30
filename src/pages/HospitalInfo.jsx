@@ -33,10 +33,10 @@ export default function HospitalInfo() {
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       {/* Header Section */}
-      <header className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white py-24 px-6 md:px-16 overflow-hidden">
+      <header className="relative bg-gradient-to-br min-h-screen -mt-16 md:-mt-20 from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
+        <div className="relative z-10 max-w-6xl mx-auto mt-24 text-center">
           <div className="mb-8">
             <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
               <svg className="w-5 h-5 text-teal-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,39 +44,39 @@ export default function HospitalInfo() {
               </svg>
               <span className="text-teal-100 font-medium">Leading Healthcare Excellence Since 2000</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">CityCare</span>
               <br />
               Multispeciality Hospital
             </h1>
-            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
               Committed to delivering compassionate care with cutting-edge technology and a team of dedicated professionals.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-4 px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+            <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base">
               Book Appointment
             </button>
-            <button className="border-2 border-white/30 text-white font-semibold py-4 px-10 rounded-2xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+            <button className="border-2 border-white/30 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base">
               Learn More
             </button>
           </div>
           <div className="mt-12 flex justify-center space-x-8 text-blue-100">
             <div className="flex items-center space-x-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>24/7 Emergency</span>
             </div>
             <div className="flex items-center space-x-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <span>500+ Beds</span>
             </div>
             <div className="flex items-center space-x-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
               </svg>
               <span>100+ Specialists</span>
             </div>
@@ -85,7 +85,7 @@ export default function HospitalInfo() {
       </header>
 
       {/* About Section */}
-      <section className="py-16 px-6 md:px-16 bg-white shadow-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+      <section className="py-8 md:py-16 px-4 md:px-16 bg-white shadow-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -177,7 +177,7 @@ export default function HospitalInfo() {
       <section className="py-16 px-6 md:px-16 bg-white animate-fadeIn" style={{ animationDelay: '0.6s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-8 text-center">Departments & Specialties</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
             {[
               { name: "Cardiology", icon: "❤️" },
               { name: "Neurology", icon: "🧠" },
@@ -211,7 +211,7 @@ export default function HospitalInfo() {
       <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '1.4s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Meet Our Doctors</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
             {[
               { name: "Dr. Ananya Sharma", specialty: "Cardiologist", image: Ananya, color: "from-red-500 to-pink-500" },
               { name: "Dr. Rajesh Mehta", specialty: "Neurologist", image: Rajesh, color: "from-purple-500 to-indigo-500" },
@@ -330,7 +330,7 @@ export default function HospitalInfo() {
                     type="text"
                     id="name"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300"
                     required
                   />
@@ -347,7 +347,7 @@ export default function HospitalInfo() {
                     type="email"
                     id="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300"
                     required
                   />
@@ -364,7 +364,7 @@ export default function HospitalInfo() {
                     id="message"
                     rows="4"
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300 resize-none"
                     required
                   ></textarea>

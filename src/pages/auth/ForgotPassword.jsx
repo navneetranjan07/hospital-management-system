@@ -13,7 +13,7 @@ export default function ForgotPassword() {
     // Simulate API call
     setTimeout(() => {
       setSubmitted(true);
-      setLoading(false);
+      setLoading(false); 
     }, 2000);
   };
 
