@@ -128,6 +128,7 @@ export default function Login() {
                 value={form.username}
                 onChange={handleChange}
                 placeholder="Username"
+                autoFocus
                 className="w-full bg-gray-800/80 border border-gray-600 p-3 pl-10 rounded-xl focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500 outline-none transition-all duration-300 shadow-sm hover:shadow-md text-white placeholder-gray-400"
                 required
               />

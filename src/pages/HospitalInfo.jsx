@@ -211,7 +211,7 @@ export default function HospitalInfo() {
       <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50 animate-fadeIn" style={{ animationDelay: '1.4s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Meet Our Doctors</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
             {[
               { name: "Dr. Ananya Sharma", specialty: "Cardiologist", image: Ananya, color: "from-red-500 to-pink-500" },
               { name: "Dr. Rajesh Mehta", specialty: "Neurologist", image: Rajesh, color: "from-purple-500 to-indigo-500" },

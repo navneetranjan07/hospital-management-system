@@ -1,8 +1,10 @@
-# TODO: Make HospitalInfo.jsx Responsive
+# TODO: Add Scroll Animations to Homepage (HospitalInfo.jsx)
 
-- [x] Update header section: Change `h-screen` to `min-h-screen` and adjust top margin for mobile
-- [x] Enhance text responsiveness: Add smaller sizes for mobile and larger for desktop/MacBook in headings
-- [ ] Optimize departments grid: Add `lg:` and `xl:` breakpoints for better layout on larger screens
-- [ ] Optimize doctors grid: Add `lg:` and `xl:` breakpoints for better layout on larger screens
-- [ ] Adjust padding and spacing: Use responsive padding classes throughout sections
-- [ ] Ensure buttons and forms are mobile-friendly: Adjust button sizes and form layouts
+1. Import Framer Motion components (motion, useInView, useAnimation) in HospitalInfo.jsx ✓
+2. Add scroll-triggered animation to Header Section
+3. Add scroll-triggered animation to About Section ✓
+4. Add scroll-triggered animation to Mission and Vision Section
+5. Add scroll-triggered animation to Departments Section
+6. Add scroll-triggered animation to Doctors Section
+7. Add scroll-triggered animation to Contact Section
+8. Test animations by running `npm run dev` and verifying in browser
