@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
-import { Pencil, Trash2, Plus, X } from "lucide-react";
+import { Pencil, Trash2, Plus, X, Users, UserPlus, User, Phone, Search, Edit3, Stethoscope } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
@@ -39,18 +40,24 @@ export default function Doctors() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     try {
       if (editingId) {
         await axios.put(`${baseUrl}/${editingId}`, form);
+        toast.success("Doctor updated successfully!");
         setEditingId(null);
       } else {
         await axios.post(baseUrl, form);
+        toast.success("Doctor added successfully!");
       }
-      setForm({ id: "", name: "", specialization: "",phone: "" });
+      setForm({ id: "", name: "", specialization: "", phone: "" });
       setShowForm(false);
       fetchDoctors();
     } catch (err) {
+      toast.error("Failed to save doctor. Please try again.");
       console.error("Error submitting form:", err);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -83,122 +90,215 @@ export default function Doctors() {
       .includes(search.toLowerCase())
   );
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const containerVariants = {
+    initial: { opacity: 0 },
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    },
+    viewport: { once: true }
+  };
+
+  const childVariants = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-extrabold text-center mb-6 text-gray-800">
-        👨‍⚕️ Doctors Management
-      </h1>
+    <div className="bg-gray-50 text-gray-800 min-h-screen">
+      {/* Header Section */}
+      <motion.header
+        className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden"
+        {...fadeInUp}
+      >
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
+              <Stethoscope className="w-5 h-5 text-teal-300 mr-2" />
+              <span className="text-teal-100 font-medium">Medical Professionals Directory</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Doctors</span>
+              <br />
+              Management
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+              Expert healthcare professionals dedicated to providing exceptional medical care and treatment.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => {
+                setShowForm(!showForm);
+                if (!showForm) {
+                  setForm({ id: "", name: "", specialization: "", phone: "" });
+                  setEditingId(null);
+                }
+              }}
+              className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
+            >
+              {showForm ? <X size={20} /> : <UserPlus size={20} />}
+              {showForm ? "Close Form" : "Add New Doctor"}
+            </button>
+          </div>
+          <div className="mt-12 flex justify-center space-x-8 text-blue-100">
+            <div className="flex items-center space-x-2">
+              <User className="w-5 h-5" />
+              <span>{doctors.length} Doctors</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Stethoscope className="w-5 h-5" />
+              <span>Specialized Care</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Phone className="w-5 h-5" />
+              <span>24/7 Available</span>
+            </div>
+          </div>
+        </div>
+      </motion.header>
 
-      {/* 🔍 Search and Add Doctor */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-6">
-        <input
-          type="text"
-          placeholder="🔍 Search doctors by name, ID, specialization, or phone..."
-          className="border border-gray-300 p-3 rounded-xl w-full sm:w-1/2 focus:ring-2 focus:ring-blue-400 shadow-sm transition"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            setShowForm(!showForm);
-            setForm({
-              id: "",
-              name: "",
-              specialization: "",
-              gender: "",
-              phone: "",
-            });
-            setEditingId(null);
-          }}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-semibold shadow-md transition ${showForm
-              ? "bg-gray-500 hover:bg-gray-600"
-              : "bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
-            }`}
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Search */}
+        <motion.div
+          className="mb-6"
+          {...fadeInUp}
         >
-          {showForm ? <X size={18} /> : <Plus size={18} />}
-          {showForm ? "Close Form" : "Add New Doctor"}
-        </button>
-      </div>
-
-      {/* 🧾 Doctor Form */}
-      {showForm && (
-        <form
-          onSubmit={handleSubmit}
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100 animate-fadeIn"
-        >
-          {["id", "name", "specialization", "phone"].map((field) => (
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
-              key={field}
-              className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400"
-              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-              value={form[field]}
-              type={field === "id" ? "number" : "text"}
-              onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-              required
+              type="text"
+              placeholder="🔍 Search by name, ID, specialization, or phone..."
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-          ))}
-          <button
-            type="submit"
-            className="col-span-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 font-semibold transition shadow-md"
-          >
-            {editingId ? "💾 Update Doctor" : "➕ Add Doctor"}
-          </button>
-        </form>
-      )}
+          </div>
+        </motion.div>
 
-      {/* 🧍‍♂️ Doctors Table */}
-      {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <ClipLoader size={50} color="#3B82F6" />
-        </div>
-      ) : (
-        <div className="overflow-x-auto bg-white shadow-lg rounded-2xl border border-gray-100">
-          <table className="w-full text-center">
-            <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 uppercase text-sm">
-              <tr>
-                <th className="p-3">ID</th>
-                <th className="p-3">Name</th>
-                <th className="p-3">Specialization</th>
-                <th className="p-3">Phone</th>
-                <th className="p-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredDoctors.length > 0 ? (
-                filteredDoctors.map((d) => (
-                  <tr key={d.id} className="border-t hover:bg-gray-50 transition">
-                    <td className="p-3">{d.id}</td>
-                    <td className="p-3 font-medium">{d.name}</td>
-                    <td className="p-3">{d.specialization}</td>
-                    <td className="p-3">{d.phone}</td>
-                    <td className="p-3 flex justify-center gap-3">
-                      <button
-                        onClick={() => handleEdit(d)}
-                        className="flex items-center gap-1 bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-lg shadow transition"
-                      >
-                        <Pencil size={16} /> Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(d.id)}
-                        disabled={submitting}
-                        className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg shadow transition disabled:opacity-50"
-                      >
-                        <Trash2 size={16} /> Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="p-6 text-gray-500">
-                    No doctors found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      )}
+        {/* Form */}
+        {showForm && (
+          <motion.form
+            onSubmit={handleSubmit}
+            className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
+            {...fadeInUp}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {["id", "name", "specialization", "phone"].map((field) => (
+              <div key={field} className="relative">
+                <input
+                  className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  value={form[field]}
+                  type={field === "id" ? "number" : "text"}
+                  onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+                  required
+                />
+              </div>
+            ))}
+            <motion.button
+              type="submit"
+              className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
+              disabled={submitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
+              {editingId ? "Update Doctor" : "Add Doctor"}
+            </motion.button>
+          </motion.form>
+        )}
+
+        {/* Doctors Cards */}
+        {loading ? (
+          <motion.div
+            className="flex justify-center items-center py-12"
+            {...fadeInUp}
+          >
+            <ClipLoader size={50} color="#3B82F6" />
+          </motion.div>
+        ) : (
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            {...containerVariants}
+          >
+            {filteredDoctors.length > 0 ? (
+              filteredDoctors.map((d) => (
+                <motion.div
+                  key={d.id}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1 overflow-hidden"
+                  {...childVariants}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <Stethoscope className="w-6 h-6 text-teal-500" />
+                      <h3 className="text-xl font-bold text-blue-800">{d.name}</h3>
+                    </div>
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">ID: {d.id}</span>
+                  </div>
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <Stethoscope className="w-4 h-4" />
+                      <span>Specialization: {d.specialization}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <Phone className="w-4 h-4" />
+                      <span>Phone: {d.phone}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 pt-4 border-t border-gray-100">
+                    <motion.button
+                      onClick={() => handleEdit(d)}
+                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-2 rounded-xl hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Pencil size={16} />
+                      Edit
+                    </motion.button>
+                    <motion.button
+                      onClick={() => handleDelete(d.id)}
+                      disabled={submitting}
+                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 rounded-xl hover:from-red-600 hover:to-red-700 font-semibold transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Trash2 size={16} />
+                      Delete
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ))
+            ) : (
+              <motion.div
+                className="col-span-full text-center py-12 text-gray-500"
+                {...childVariants}
+              >
+                <Stethoscope className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                <p>No doctors found matching your search.</p>
+              </motion.div>
+            )}
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }
