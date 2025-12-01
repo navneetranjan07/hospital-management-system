@@ -82,7 +82,13 @@ export default function Navbar() {
         <div className="mobile-menu-side">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-white">Menu</h2>
-            </div>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:text-teal-300 transition-colors duration-300"
+            >
+              <FaTimes size={20} />
+            </button>
+          </div>
           <Link
             to="/patients"
             onClick={() => setMenuOpen(false)}
