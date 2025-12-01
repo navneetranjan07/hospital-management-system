@@ -24,13 +24,13 @@ export default function Navbar() {
       <nav className="bg-gradient-to-r main_bg text-white px-6 py-4 shadow-lg sticky top-0 z-50">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <FaUserMd className="text-2xl text-teal-300" />
+           <div className="flex items-center space-x-2">
+            <Link to="/home"><FaUserMd className="text-2xl text-teal-300" /></Link>
             <div>
               <h1 className="text-xl cursor-pointer font-semibold tracking-wide">
                 <Link to="/home">CityCare Hospital</Link>
               </h1>
-              <p className="text-sm text-teal-200 opacity-80">Your Health, Our Priority</p>
+              <p className="text-sm text-teal-200 opacity-80"><Link to="/home">Your Health, Our Priority</Link></p>
             </div>
             {localStorage.getItem("username") && (
               <span className="hidden md:block text-sm bg-white/10 px-3 py-1 rounded-full ml-4">

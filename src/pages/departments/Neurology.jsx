@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
 
 const Neurology = () => {
   const navigate = useNavigate();
@@ -12,130 +11,97 @@ const Neurology = () => {
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       {/* Header */}
-      <header className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 text-white py-20 px-6 md:px-16 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
+     <header className="relative bg-gradient-to-br from-blue-800 via-blue-700 to-cyan-800 text-white py-24 px-6 md:px-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
           <button
-            onClick={() => navigate(-1)}
-            className="flex items-center space-x-2 text-purple-200 hover:text-white transition-colors mb-6"
+            onClick={() => navigate("/home")}
+            className="absolute left-6 top-6 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all"
           >
-            <FaArrowLeft className="w-5 h-5" />
-            <span>Back</span>
+            ← Back to Home
           </button>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center">Neurology Department</h1>
-          <p className="text-xl md:text-2xl text-center text-purple-100 max-w-3xl mx-auto leading-relaxed">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Neurology</span>
+            <br />
+            Department
+          </h1>
+          <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
             Advanced care for brain, spine, and nervous system disorders with cutting-edge diagnostics and treatments.
           </p>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="py-16 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* Overview */}
-          <section className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-purple-800 mb-6">Our Neurology Services</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Comprehensive Neurological Care</h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Stroke prevention and acute stroke management</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Epilepsy diagnosis and treatment</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Migraine and headache management</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Parkinson's disease and movement disorders</span>
-                  </li>
-                </ul>
+      {/* About Department */}
+      <section className="py-16 px-6 md:px-16 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-blue-700 mb-8 text-center">About Neurology Department</h2>
+          <p className="text-lg text-gray-700 leading-relaxed mb-8">
+            Our Neurology Department provides specialized care for disorders of the brain, spinal cord, and nervous system.
+            From diagnosis to treatment, we offer comprehensive neurological services in a supportive environment.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🧠</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-blue-800">Brain Health</h3>
+                  <p className="text-gray-600">Stroke Care, Epilepsy, Migraine Management</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">State-of-the-Art Technology</h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Advanced MRI and CT imaging for precise diagnosis</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>EEG and EMG for nerve function assessment</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Neuro-navigation systems for surgical precision</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Rehabilitation programs for neurological recovery</span>
-                  </li>
-                </ul>
+              <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🦴</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-blue-800">Spine & Nerves</h3>
+                  <p className="text-gray-600">Movement Disorders, Neurorehabilitation</p>
+                </div>
               </div>
             </div>
-          </section>
-
-          {/* About the Department */}
-          <section className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">About Our Neurology Department</h2>
-            <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-8">
-              Our Neurology Department is dedicated to providing comprehensive care for disorders of the nervous system. 
-              With a team of highly skilled neurologists and neurosurgeons, we offer multidisciplinary approaches to 
-              diagnose and treat a wide range of conditions affecting the brain, spinal cord, and nerves. Our commitment 
-              to patient-centered care ensures that each individual receives personalized treatment plans tailored to 
-              their specific needs.
-            </p>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-                <div className="text-gray-600">Experienced Neurologists</div>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-                <div className="text-gray-600">Emergency Stroke Care</div>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <div className="text-3xl font-bold text-purple-600 mb-2">95%</div>
-                <div className="text-gray-600">Patient Satisfaction</div>
-              </div>
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-md">
+              <h3 className="text-2xl font-bold text-blue-600 mb-4">Our Specialists</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Dr. Arjun Singh - Lead Neurologist</li>
+                <li>• Dr. Ananya Sharma - Neurosurgeon</li>
+                <li>• Dr. Rajesh Mehta - Epileptologist</li>
+              </ul>
+              <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-2xl shadow-xl transition-all duration-300">
+                Book Appointment
+              </button>
             </div>
-          </section>
-
-          {/* CTA */}
-          <section className="text-center">
-            <h2 className="text-3xl font-bold text-purple-800 mb-4">Ready to Schedule an Appointment?</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Our neurology specialists are here to help you achieve optimal neurological health. Contact us today to book a consultation.
-            </p>
-            <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-4 px-12 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              Book Appointment
-            </button>
-          </section>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Services */}
+      <section className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Our Services</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              { title: "Stroke Care", desc: "Acute stroke management and prevention." },
+              { title: "Epilepsy Treatment", desc: "Diagnosis and seizure control." },
+              { title: "Migraine Management", desc: "Headache relief and prevention." },
+              { title: "Parkinson's Disease", desc: "Movement disorder treatment." },
+              { title: "Multiple Sclerosis", desc: "MS diagnosis and therapy." },
+              { title: "Neurorehabilitation", desc: "Recovery programs for neurological conditions." },
+            ].map((service, index) => (
+              <div key={index} className="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
+                <h3 className="text-xl font-bold text-blue-800 mb-2">{service.title}</h3>
+                <p className="text-gray-600">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Link */}
+      <footer className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white text-center py-8">
+        <p className="text-blue-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
+      </footer>
     </div>
   );
 };

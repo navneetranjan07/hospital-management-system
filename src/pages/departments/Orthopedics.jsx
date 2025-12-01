@@ -100,7 +100,7 @@ export default function Orthopedics() {
 
       {/* Footer Link */}
       <footer className="bg-gradient-to-r from-green-900 via-green-800 to-teal-900 text-white text-center py-8">
-        <p className="text-green-100">For emergencies, contact our 24/7 helpline: +91 98765 43210</p>
+        <p className="text-green-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
       </footer>
     </div>
   );

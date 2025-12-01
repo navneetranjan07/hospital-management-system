@@ -101,7 +101,7 @@ export default function EmergencyMedicine() {
 
       {/* Footer Link */}
       <footer className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 text-white text-center py-8">
-        <p className="text-red-100">For emergencies, contact our 24/7 helpline: +91 98765 43210</p>
+        <p className="text-red-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
       </footer>
     </div>
   );

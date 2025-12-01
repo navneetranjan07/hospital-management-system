@@ -330,7 +330,7 @@ export default function HospitalInfo() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-blue-700 mb-1">Phone</h3>
-                  <p className="text-gray-600">+91 98765 43210</p>
+                  <p className="text-gray-600">+91 95724 32388</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">

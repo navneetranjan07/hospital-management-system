@@ -56,23 +56,23 @@ export default function Register() {
                 <FaStethoscope className="absolute -top-1 -right-1 text-cyan-300 text-xl animate-pulse" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent drop-shadow-2xl">
-                Welcome to HealthCare Hospital
+                Join HealthCare Hospital
               </h1>
               <p className="text-lg md:text-xl mb-6 leading-relaxed font-light drop-shadow-lg">
-                Your trusted partner in health and wellness. Comprehensive medical services with compassionate care.
+                Create your account to access personalized healthcare services and manage your health records securely.
               </p>
               <div className="space-y-2 text-sm md:text-base mb-6 flex flex-col md:flex-row md:space-y-0 md:space-x-4">
                 <div className="flex items-center justify-center space-x-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all">
-                  <FaHospital className="text-cyan-300 text-lg" />
-                  <span className="font-medium">24/7 Emergency</span>
+                  <FaUser className="text-cyan-300 text-lg" />
+                  <span className="font-medium">Account Creation</span>
                 </div>
                 <div className="flex items-center justify-center space-x-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all">
-                  <FaStethoscope className="text-cyan-300 text-lg" />
-                  <span className="font-medium">Expert Specialists</span>
+                  <FaLock className="text-cyan-300 text-lg" />
+                  <span className="font-medium">Secure Registration</span>
                 </div>
                 <div className="flex items-center justify-center space-x-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all">
-                  <FaHeart className="text-red-400 text-lg" />
-                  <span className="font-medium">Patient Care</span>
+                  <FaHeart className="text-green-400 text-lg" />
+                  <span className="font-medium">Personalized Care</span>
                 </div>
               </div>
               <div className="flex space-x-4">

@@ -100,7 +100,7 @@ export default function Dermatology() {
 
       {/* Footer Link */}
       <footer className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 text-white text-center py-8">
-        <p className="text-purple-100">For emergencies, contact our 24/7 helpline: +91 98765 43210</p>
+        <p className="text-purple-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
       </footer>
     </div>
   );

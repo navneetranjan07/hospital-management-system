@@ -100,7 +100,7 @@ export default function Oncology() {
 
       {/* Footer Link */}
       <footer className="bg-gradient-to-r from-orange-900 via-orange-800 to-yellow-900 text-white text-center py-8">
-        <p className="text-orange-100">For emergencies, contact our 24/7 helpline: +91 98765 43210</p>
+        <p className="text-orange-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
       </footer>
     </div>
   );

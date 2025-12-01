@@ -100,7 +100,7 @@ export default function Urology() {
 
       {/* Footer Link */}
       <footer className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-blue-900 text-white text-center py-8">
-        <p className="text-indigo-100">For emergencies, contact our 24/7 helpline: +91 98765 43210</p>
+        <p className="text-indigo-100">For emergencies, contact our 24/7 helpline: +91 95724 32388</p>
       </footer>
     </div>
   );
