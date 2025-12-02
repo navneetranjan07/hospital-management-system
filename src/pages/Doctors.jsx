@@ -119,79 +119,35 @@ export default function Doctors() {
   };
 
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen">
-      {/* Header Section */}
-      <motion.header
-        className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden"
-        {...fadeInUp}
-      >
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
-              <Stethoscope className="w-5 h-5 text-teal-300 mr-2" />
-              <span className="text-teal-100 font-medium">Medical Professionals Directory</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Doctors</span>
-              <br />
-              Management
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
-              Expert healthcare professionals dedicated to providing exceptional medical care and treatment.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => {
-                setShowForm(!showForm);
-                if (!showForm) {
-                  setForm({ id: "", name: "", specialization: "", phone: "" });
-                  setEditingId(null);
-                }
-              }}
-              className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
-            >
-              {showForm ? <X size={20} /> : <UserPlus size={20} />}
-              {showForm ? "Close Form" : "Add New Doctor"}
-            </button>
-          </div>
-          <div className="mt-12 flex justify-center space-x-8 text-blue-100">
-            <div className="flex items-center space-x-2">
-              <User className="w-5 h-5" />
-              <span>{doctors.length} Doctors</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Stethoscope className="w-5 h-5" />
-              <span>Specialized Care</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="w-5 h-5" />
-              <span>24/7 Available</span>
-            </div>
-          </div>
+    <div className=" text-gray-800 min-h-screen py-3 px-3">
+      <div className="flex justify-around">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search by name, ID, gender, or phone..."
+            className="md:w-96 pl-10 pr-4 py-3 sm:py-2 px-6 sm:px-10 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-      </motion.header>
-
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Search */}
-        <motion.div
-          className="mb-6"
-          {...fadeInUp}
+        <button
+          onClick={() => {
+            setShowForm(!showForm);
+            if (!showForm) {
+              setForm({ id: "", name: "", specialization: "", phone: "" });
+              setEditingId(null);
+            }
+          }}
+          className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-2 px-6 sm:px-10 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
         >
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="🔍 Search by name, ID, specialization, or phone..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        </motion.div>
+          {showForm ? <X size={20} /> : <UserPlus size={20} />}
+          {showForm ? "Close Form" : "Add New Doctor"}
+        </button>
+      </div>
 
+
+      <div className="max-w-6xl mx-auto px-4 py-4">
         {/* Form */}
         {showForm && (
           <motion.form
@@ -226,7 +182,7 @@ export default function Doctors() {
             </motion.button>
           </motion.form>
         )}
-
+        <hr />
         {/* Doctors Cards */}
         {loading ? (
           <motion.div
@@ -237,7 +193,7 @@ export default function Doctors() {
           </motion.div>
         ) : (
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid  mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
             {...containerVariants}
           >
             {filteredDoctors.length > 0 ? (
@@ -250,7 +206,7 @@ export default function Doctors() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <Stethoscope className="w-6 h-6 text-teal-500" />
-                      <h3 className="text-xl font-bold text-blue-800">{d.name}</h3>
+                      <h3 className="text-xl md:text-base md:max-w-52 overflow-auto font-bold text-blue-800">{d.name}</h3>
                     </div>
                     <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">ID: {d.id}</span>
                   </div>
@@ -264,7 +220,7 @@ export default function Doctors() {
                       <span>Phone: {d.phone}</span>
                     </div>
                   </div>
-                  <div className="flex gap-2 pt-4 border-t border-gray-100">
+                  <div className="flex gap-2 pt-4 border-gray-100">
                     <motion.button
                       onClick={() => handleEdit(d)}
                       className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-2 rounded-xl hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md"
@@ -292,7 +248,7 @@ export default function Doctors() {
                 className="col-span-full text-center py-12 text-gray-500"
                 {...childVariants}
               >
-                <Stethoscope className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                 <p>No doctors found matching your search.</p>
               </motion.div>
             )}

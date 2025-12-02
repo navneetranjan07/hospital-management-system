@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { Pencil, Trash2, Plus, X, Calendar, User, Stethoscope, Search, Edit3 } from "lucide-react";
+import { Pencil, Trash2, Plus, X, Calendar, User, Stethoscope, Search, Edit3, UserPlus } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
@@ -129,80 +129,36 @@ export default function Appointments() {
     }
   };
 
-  return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen">
-      {/* Header Section */}
-      <motion.header
-        className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden"
-        {...fadeInUp}
-      >
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
-              <Calendar className="w-5 h-5 text-teal-300 mr-2" />
-              <span className="text-teal-100 font-medium">Appointment Scheduling System</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Appointment</span>
-              <br />
-              Management
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
-              Efficient scheduling and management of patient appointments with healthcare professionals.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => {
-                setShowForm(!showForm);
-                if (!showForm) {
-                  setForm({ id: "", patientId: "", doctorId: "", appointmentTime: "" });
-                  setEditingId(null);
-                }
-              }}
-              className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
-            >
-              {showForm ? <X size={20} /> : <Plus size={20} />}
-              {showForm ? "Close Form" : "Schedule New Appointment"}
-            </button>
-          </div>
-          <div className="mt-12 flex justify-center space-x-8 text-blue-100">
-            <div className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5" />
-              <span>{appointments.length} Appointments</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <User className="w-5 h-5" />
-              <span>Active Patients</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Stethoscope className="w-5 h-5" />
-              <span>Expert Doctors</span>
-            </div>
-          </div>
+ return (
+    <div className=" text-gray-800 min-h-screen py-3 px-3">
+      <div className="flex justify-around">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search by name, ID, gender, or phone..."
+            className="md:w-96 pl-10 pr-4 py-3 sm:py-2 px-6 sm:px-10 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-      </motion.header>
-
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Search */}
-        <motion.div
-          className="mb-6"
-          {...fadeInUp}
+        <button
+          onClick={() => {
+            setShowForm(!showForm);
+            if (!showForm) {
+              setForm({ id: "", patientId: "", doctorId: "", appointmentTime: "" });
+              setEditingId(null);
+            }
+          }}
+          className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-2 px-6 sm:px-10 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
         >
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="🔍 Search by patient, doctor, or time..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        </motion.div>
+          {showForm ? <X size={20} /> : <Plus size={20} />}
+          {showForm ? "Close Form" : "Add New Appointment"}
+        </button>
+      </div>
 
+
+      <div className="max-w-6xl mx-auto px-4 py-4">
         {/* Form */}
         {showForm && (
           <motion.form
@@ -216,8 +172,9 @@ export default function Appointments() {
             <div className="relative">
               <input
                 className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                placeholder="Appointment Number"
+                placeholder="ID"
                 value={form.id}
+                type="number"
                 onChange={(e) => setForm({ ...form, id: e.target.value })}
                 required
               />
@@ -232,7 +189,7 @@ export default function Appointments() {
                 <option value="">Select Patient</option>
                 {patients.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.name}
+                    {p.name} (ID: {p.id})
                   </option>
                 ))}
               </select>
@@ -247,16 +204,17 @@ export default function Appointments() {
                 <option value="">Select Doctor</option>
                 {doctors.map((d) => (
                   <option key={d.id} value={d.id}>
-                    {d.name}
+                    {d.name} (ID: {d.id})
                   </option>
                 ))}
               </select>
             </div>
-            <div className="relative col-span-full sm:col-span-1 md:col-span-1">
+            <div className="relative">
               <input
                 className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                type="datetime-local"
+                placeholder="Appointment Time"
                 value={form.appointmentTime}
+                type="datetime-local"
                 onChange={(e) => setForm({ ...form, appointmentTime: e.target.value })}
                 required
               />
@@ -269,22 +227,22 @@ export default function Appointments() {
               whileTap={{ scale: 0.98 }}
             >
               {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <Plus size={20} />}
-              {editingId ? "Update Appointment" : "Schedule Appointment"}
+              {editingId ? "Update Appointment" : "Add Appointment"}
             </motion.button>
           </motion.form>
         )}
-
+<hr />
         {/* Appointments Cards */}
         {loading ? (
-          <motion.header
+          <motion.div
             className="flex justify-center items-center py-12"
             {...fadeInUp}
           >
             <ClipLoader size={50} color="#3B82F6" />
-          </motion.header>
+          </motion.div>
         ) : (
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid  mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
             {...containerVariants}
           >
             {filteredAppointments.length > 0 ? (
@@ -297,32 +255,25 @@ export default function Appointments() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-6 h-6 text-teal-500" />
-                      <h3 className="text-xl font-bold text-blue-800">Apt. {a.id}</h3>
+                      <h3 className="text-xl md:text-base md:max-w-52 overflow-auto font-bold text-blue-800">Appointment #{a.id}</h3>
                     </div>
-                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">Scheduled</span>
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">ID: {a.id}</span>
                   </div>
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center gap-2 text-gray-600">
                       <User className="w-4 h-4" />
-                      <span>Patient: {a.patient?.name}</span>
+                      <span>Patient: {a.patient?.name || "N/A"}</span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-600">
                       <Stethoscope className="w-4 h-4" />
-                      <span>Doctor: {a.doctor?.name}</span>
+                      <span>Doctor: {a.doctor?.name || "N/A"}</span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-600">
                       <Calendar className="w-4 h-4" />
-                      <span>
-                        {a.appointmentTime
-                          ? new Date(a.appointmentTime).toLocaleString("en-IN", {
-                            dateStyle: "medium",
-                            timeStyle: "short",
-                          })
-                          : ""}
-                      </span>
+                      <span>Time: {new Date(a.appointmentTime).toLocaleString()}</span>
                     </div>
                   </div>
-                  <div className="flex gap-2 pt-4 border-t border-gray-100">
+                  <div className="flex gap-2 pt-4 border-gray-100">
                     <motion.button
                       onClick={() => handleEdit(a)}
                       className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-2 rounded-xl hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md"
