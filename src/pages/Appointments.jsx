@@ -20,6 +20,8 @@ export default function Appointments() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const baseUrl = "http://localhost:8787/appointments";
 
@@ -76,20 +78,30 @@ export default function Appointments() {
     setShowForm(true);
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this appointment?")) {
-      setSubmitting(true);
-      try {
-        await axios.delete(`${baseUrl}/${id}`);
-        toast.success("Appointment deleted successfully!");
-        fetchAppointments();
-      } catch (err) {
-        toast.error("Failed to delete appointment. Please try again.");
-        console.error("Error deleting appointment:", err);
-      } finally {
-        setSubmitting(false);
-      }
+  const handleDelete = (id) => {
+    setDeleteId(id);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    setSubmitting(true);
+    try {
+      await axios.delete(`${baseUrl}/${deleteId}`);
+      toast.success("Appointment deleted successfully!");
+      fetchAppointments();
+    } catch (err) {
+      toast.error("Failed to delete appointment. Please try again.");
+      console.error("Error deleting appointment:", err);
+    } finally {
+      setSubmitting(false);
+      setShowDeleteModal(false);
+      setDeleteId(null);
     }
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
   };
 
   const filteredAppointments = appointments.filter((a) => {
@@ -308,6 +320,44 @@ export default function Appointments() {
           </motion.div>
         )}
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="bg-white rounded-2xl p-6 shadow-2xl max-w-md w-full"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <Trash2 className="w-5 h-5 text-red-500" />
+              <h3 className="text-xl font-semibold text-gray-800">Confirm Deletion</h3>
+            </div>
+            <p className="text-gray-600 mb-6">Are you sure you want to delete this appointment? This action cannot be undone.</p>
+            <div className="flex gap-3 justify-end">
+              <motion.button
+                onClick={handleCancelDelete}
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-xl font-medium transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Cancel
+              </motion.button>
+              <motion.button
+                onClick={handleConfirmDelete}
+                disabled={submitting}
+                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {submitting ? <ClipLoader size={16} color="white" /> : <Trash2 size={16} />}
+                {submitting ? "Deleting..." : "Yes, Delete"}
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
