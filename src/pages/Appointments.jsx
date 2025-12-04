@@ -24,6 +24,7 @@ export default function Appointments() {
   const [deleteId, setDeleteId] = useState(null);
 
   const baseUrl = "http://localhost:8787/appointments";
+  const fetchallUrl = "http://localhost:8787/appointments/fetchall";
 
   useEffect(() => {
     fetchAppointments();
@@ -34,7 +35,7 @@ export default function Appointments() {
   const fetchAppointments = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(baseUrl);
+      const res = await axios.get(fetchallUrl);
       setAppointments(res.data);
     } catch (err) {
       toast.error("Failed to fetch appointments. Please try again.");
@@ -49,7 +50,7 @@ export default function Appointments() {
     setSubmitting(true);
     try {
       if (editingId) {
-        await axios.put(`${baseUrl}/${editingId}`, form);
+        await axios.put(`${baseUrl}/update/${editingId}`, form);
         toast.success("Appointment updated successfully!");
         setEditingId(null);
       } else {
@@ -86,7 +87,7 @@ export default function Appointments() {
   const handleConfirmDelete = async () => {
     setSubmitting(true);
     try {
-      await axios.delete(`${baseUrl}/${deleteId}`);
+      await axios.delete(`${baseUrl}/delete/${deleteId}`);
       toast.success("Appointment deleted successfully!");
       fetchAppointments();
     } catch (err) {
@@ -201,7 +202,7 @@ export default function Appointments() {
                 <option value="">Select Patient</option>
                 {patients.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.name} (ID: {p.id})
+                   (ID: {p.id}) {p.name} 
                   </option>
                 ))}
               </select>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Ananya from "../assets/doctors/Ananya-Sharma.jpg";
@@ -19,6 +19,15 @@ export default function HospitalInfo() {
     email: '',
     message: ''
   });
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const element = document.getElementById(window.location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -217,6 +226,7 @@ export default function HospitalInfo() {
 
       {/* Departments */}
       <motion.section
+        id="departments"
         className="py-16 px-6 md:px-16 bg-white"
         {...fadeInUp}
       >

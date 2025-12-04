@@ -7,6 +7,7 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
+  FaBuilding,
 } from "react-icons/fa";
 
 export default function Navbar() {
@@ -59,6 +60,12 @@ export default function Navbar() {
             >
               <FaCalendarAlt /> Appointments
             </Link>
+            <Link
+              to="/departments"
+              className="hover:text-blue-200 flex items-center p-1 gap-1 rounded-lg hover:scale-[1.03] hover:shadow-lg transition"
+            >
+              <FaBuilding /> Disease Departments
+            </Link>
             <button
               onClick={handleLogout}
               className="ml-4 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg flex items-center gap-2 transition hover:scale-[1.03]"
@@ -104,6 +111,13 @@ export default function Navbar() {
             className="flex items-center gap-3 text-white hover:text-teal-300 transition-all duration-300 text-lg py-3 px-4 rounded-lg"
           >
             <FaCalendarAlt /> Appointments
+          </Link>
+          <Link
+            to="/departments"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-3 text-white hover:text-teal-300 transition-all duration-300 text-lg py-3 px-4 rounded-lg"
+          >
+            <FaBuilding /> Departments
           </Link>
           <button
             onClick={() => {

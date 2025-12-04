@@ -20,6 +20,7 @@ export default function Doctors() {
   const [submitting, setSubmitting] = useState(false);
 
   const baseUrl = "http://localhost:8787/doctors";
+  const fetchallUrl = "http://localhost:8787/doctors/fetchall";
 
   useEffect(() => {
     fetchDoctors();
@@ -28,7 +29,7 @@ export default function Doctors() {
   const fetchDoctors = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(baseUrl);
+      const res = await axios.get(fetchallUrl);
       setDoctors(res.data);
     } catch (err) {
       toast.error("Failed to fetch doctors. Please try again.");
@@ -43,7 +44,7 @@ export default function Doctors() {
     setSubmitting(true);
     try {
       if (editingId) {
-        await axios.put(`${baseUrl}/${editingId}`, form);
+        await axios.put(`${baseUrl}/update/${editingId}`, form);
         toast.success("Doctor updated successfully!");
         setEditingId(null);
       } else {
@@ -71,7 +72,7 @@ export default function Doctors() {
     if (window.confirm("Are you sure you want to delete this doctor?")) {
       setSubmitting(true);
       try {
-        await axios.delete(`${baseUrl}/${id}`);
+        await axios.delete(`${baseUrl}/delete/${id}`);
         toast.success("Doctor deleted successfully!");
         fetchDoctors();
       } catch (err) {

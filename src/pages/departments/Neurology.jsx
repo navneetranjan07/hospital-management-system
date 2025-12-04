@@ -16,7 +16,7 @@ const Neurology = () => {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <button
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/home#departments")}
             className="absolute left-6 top-6 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all"
           >
             ← Back to Home
