@@ -144,39 +144,55 @@ export default function Patients() {
 
       <div className="max-w-6xl mx-auto px-4 py-4">
         {/* Form */}
-        {showForm && (
-          <motion.form
-            onSubmit={handleSubmit}
-            className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
-            {...fadeInUp}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+{showForm && (
+  <motion.form
+    onSubmit={handleSubmit}
+    className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
+    {...fadeInUp}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}
+  >
+    {["id", "name", "age", "gender", "phone", "diseaseDepartment"].map((field) => (
+      <div key={field} className="relative">
+        {field === "gender" ? (
+          <select
+            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+            value={form.gender}
+            onChange={(e) => setForm({ ...form, gender: e.target.value })}
+            required
           >
-            {["id", "name", "age", "gender", "phone", "diseaseDepartment"].map((field) => (
-              <div key={field} className="relative">
-                <input
-                  className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                  value={form[field]}
-                  type={field === "age" ? "number" : "text"}
-                  onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                  required
-                />
-              </div>
-            ))}
-            <motion.button
-              type="submit"
-              className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
-              disabled={submitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
-              {editingId ? "Update Patient" : "Add Patient"}
-            </motion.button>
-          </motion.form>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select>
+
+        ) : (
+          <input
+            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+            placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            value={form[field]}
+            type={field === "age" ? "number" : "text"}
+            onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+            required
+          />
         )}
+      </div>
+    ))}
+
+    <motion.button
+      type="submit"
+      className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
+      disabled={submitting}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
+      {editingId ? "Update Patient" : "Add Patient"}
+    </motion.button>
+  </motion.form>
+)}
 <hr />
         {/* Patients Cards */}
         {loading ? (
