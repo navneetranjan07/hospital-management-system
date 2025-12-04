@@ -15,7 +15,6 @@ export default function Patients() {
   const [submitting, setSubmitting] = useState(false);
 
   const baseUrl = "http://localhost:8787/patients";
-  const fetchallUrl = "http://localhost:8787/patients/fetchall";
 
   useEffect(() => {
     fetchPatients();
@@ -24,7 +23,7 @@ export default function Patients() {
   const fetchPatients = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(fetchallUrl);
+      const res = await axios.get(`${baseUrl}/fetchall`);
       setPatients(res.data);
     } catch (err) {
       toast.error("Failed to fetch patients. Please try again.");
@@ -43,7 +42,7 @@ export default function Patients() {
         toast.success("Patient updated successfully!");
         setEditingId(null);
       } else {
-        await axios.post(baseUrl, form);
+        await axios.post(`${baseUrl}/save`, form);
         toast.success("Patient added successfully!");
       }
       setForm({ id: "", name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });

@@ -24,7 +24,6 @@ export default function Appointments() {
   const [deleteId, setDeleteId] = useState(null);
 
   const baseUrl = "http://localhost:8787/appointments";
-  const fetchallUrl = "http://localhost:8787/appointments/fetchall";
 
   useEffect(() => {
     fetchAppointments();
@@ -35,7 +34,7 @@ export default function Appointments() {
   const fetchAppointments = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(fetchallUrl);
+      const res = await axios.get(`${baseUrl}/fetchall`);
       setAppointments(res.data);
     } catch (err) {
       toast.error("Failed to fetch appointments. Please try again.");
@@ -54,7 +53,7 @@ export default function Appointments() {
         toast.success("Appointment updated successfully!");
         setEditingId(null);
       } else {
-        await axios.post(baseUrl, form);
+        await axios.post(`${baseUrl}/save`, form);
         toast.success("Appointment scheduled successfully!");
       }
       setForm({ id: "", patientId: "", doctorId: "", appointmentTime: "" });

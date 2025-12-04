@@ -15,7 +15,6 @@ export default function Departments() {
   const [submitting, setSubmitting] = useState(false);
 
   const baseUrl = "http://localhost:8787/api/departments";
-  const fetchallUrl = "http://localhost:8787/api/departments/fetchall";
 
   useEffect(() => {
     fetchDepartments();
@@ -24,7 +23,7 @@ export default function Departments() {
   const fetchDepartments = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(fetchallUrl);
+      const res = await axios.get(`${baseUrl}/fetchall`);
       setDepartments(res.data);
     } catch (err) {
       toast.error("Failed to fetch departments. Please try again.");
@@ -43,7 +42,7 @@ export default function Departments() {
         toast.success("Department updated successfully!");
         setEditingId(null);
       } else {
-        await axios.post(baseUrl, form);
+        await axios.post(`${baseUrl}/save`, form);
         toast.success("Department added successfully!");
       }
       setForm({ id: "", name: "", description: "" });
