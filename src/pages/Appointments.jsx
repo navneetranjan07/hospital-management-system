@@ -27,8 +27,8 @@ export default function Appointments() {
 
   useEffect(() => {
     fetchAppointments();
-    axios.get("http://localhost:8787/patients").then((res) => setPatients(res.data));
-    axios.get("http://localhost:8787/doctors").then((res) => setDoctors(res.data));
+    axios.get("http://localhost:8787/patients/fetchall").then((res) => setPatients(res.data));
+    axios.get("http://localhost:8787/doctors/fetchall").then((res) => setDoctors(res.data));
   }, []);
 
   const fetchAppointments = async () => {
