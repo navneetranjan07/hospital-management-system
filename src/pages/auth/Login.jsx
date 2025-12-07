@@ -17,31 +17,49 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    try {
-      const res = await axios.post("http://localhost:8787/userss/login", form);
-      if (res.data) {
-        if (rememberMe) {
-          localStorage.setItem("rememberMe", "true");
-          localStorage.setItem("username", form.username);
-        }
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", res.data.username);
-        setSuccessMsg("Welcome back!");
-        setTimeout(() => {
-          navigate("/home");
-        }, 1500);
-      } else {
-        setError("Invalid credentials");
+  e.preventDefault(); // Prevent default GET form submission
+
+  setError("");
+  setSuccessMsg("");
+  setLoading(true);
+
+  try {
+    const res = await axios.post(
+      import.meta.env.VITE_API_URL + "/userss/login",
+      {
+        username: form.username,
+        password: form.password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    } catch {
-      setError("Invalid username or password");
-    } finally {
-      setLoading(false);
+    );
+
+    if (res.data && res.status === 200) {
+      // Save login state
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("username", res.data.username);
+
+      if (rememberMe) {
+        localStorage.setItem("rememberMe", "true");
+      }
+
+      setSuccessMsg("Welcome back!");
+      setTimeout(() => {
+        navigate("/home");
+      }, 1500);
+    } else {
+      setError("Invalid credentials");
     }
-  };
+  } catch (err) {
+    console.error("Login error:", err);
+    setError("Invalid username or password");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
