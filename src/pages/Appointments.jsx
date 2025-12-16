@@ -142,7 +142,7 @@ export default function Appointments() {
   };
 
  return (
-    <div className=" text-gray-800 min-h-screen py-3 px-3">
+    <div className="bg-blue-200 text-gray-800 min-h-screen py-3 px-3">
       <div className="flex justify-around">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />

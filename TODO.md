@@ -1,10 +1,7 @@
-- [x] Add id="departments" to the Departments & Specialties section in HospitalInfo.jsx
-- [x] Update Back to Home button in Cardiology.jsx
-- [x] Update Back to Home button in Neurology.jsx
-- [x] Update Back to Home button in Orthopedics.jsx
-- [x] Update Back to Home button in Oncology.jsx
-- [x] Update Back to Home button in Pediatrics.jsx
-- [x] Update Back to Home button in Gynecology.jsx
-- [x] Update Back to Home button in EmergencyMedicine.jsx
-- [x] Update Back to Home button in Dermatology.jsx
-- [x] Update Back to Home button in Urology.jsx
+# TODO: Add Icons to Table Headings in Patients.jsx
+
+- [x] Update imports in Patients.jsx to include Calendar, User, Building, Settings from lucide-react
+- [x] Add Calendar icon to Age <th>
+- [x] Add User icon to Gender <th>
+- [x] Add Building icon to Department <th>
+- [x] Add Settings icon to Actions <th>

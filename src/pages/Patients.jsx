@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { Pencil, Trash2, Plus, X, Users, UserPlus, User, Calendar, Phone, Search, Edit3, UserCheck, UserCircleIcon, UserIcon, User2Icon } from "lucide-react";
+import { Pencil, Trash2, X, Users, UserPlus, Calendar, Phone, Search, Edit3, User2Icon, User, Building, Settings } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
 export default function Patients() {
   const [patients, setPatients] = useState([]);
   const [form, setForm] = useState({ 
+    id:"",
     name: "",
     age: "",
     gender: "",
@@ -174,7 +175,7 @@ export default function Patients() {
   };
 
   return (
-    <div className=" text-gray-800 min-h-screen py-3 px-3">
+    <div className="bg-blue-200 text-gray-900 min-h-screen py-3 px-3">
       <div className="flex justify-around">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -253,7 +254,13 @@ export default function Patients() {
           </motion.form>
         )}
         <hr />
-        {/* Patients Cards */}
+        {/* Patients List */}
+        <motion.h2
+          className="text-3xl font-bold text-center text-blue-800 mt-8 mb-6"
+          {...fadeInUp}
+        >
+          Patients List
+        </motion.h2>
         {loading ? (
           <motion.div
             className="flex justify-center items-center py-12"
@@ -262,75 +269,68 @@ export default function Patients() {
             <ClipLoader size={50} color="#3B82F6" />
           </motion.div>
         ) : (
-          <motion.div
-            className="grid  mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
+          <motion.table
+            className="w-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 mt-8"
             {...containerVariants}
           >
-            {patients && patients.length > 0 ? (
-              patients.map((p) => (
-                <motion.div
-                  key={p.id}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1 overflow-hidden"
-                  {...childVariants}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <User2Icon className="w-6 h-6 text-teal-500" />
-                      <h3 className="text-xl md:text-base md:max-w-52 overflow-auto font-bold text-blue-800">{p.name}</h3>
-                    </div>
-                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">ID: {p.id}</span>
-                  </div>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Calendar className="w-4 h-4" />
-                      <span>Age: {p.age}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <UserIcon className="w-4 h-4" />
-                      <span className="capitalize">Gender: {p.gender}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Phone className="w-4 h-4" />
-                      <span>Phone: {p.phone}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <UserCircleIcon className="w-4 h-4" />
-                      <span>Department: {p.diseaseDepartment}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 pt-4 border-gray-100">
-                    <motion.button
-                      onClick={() => handleEdit(p)}
-                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-2 rounded-xl hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Pencil size={16} />
-                      Edit
-                    </motion.button>
-                    <motion.button
-                      onClick={() => handleDelete(p.id)}
-                      disabled={submitting}
-                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 rounded-xl hover:from-red-600 hover:to-red-700 font-semibold transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Trash2 size={16} />
-                      Delete
-                    </motion.button>
-                  </div>
-                </motion.div>
-              ))
-            ) : (
-              <motion.div
-                className="col-span-full text-center py-12 text-gray-500"
-                {...childVariants}
-              >
-                <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                <p>No patients found.</p>
-              </motion.div>
-            )}
-          </motion.div>
+            <thead className="bg-blue-100">
+              <tr>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">ID</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Name</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Age</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Gender</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Phone</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Department</th>
+                <th className="px-6 py-4 text-center text-sm font-bold text-blue-800">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {patients && patients.length > 0 ? (
+                patients.map((p) => (
+                  <motion.tr
+                    key={p.id}
+                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    {...childVariants}
+                  >
+                    <td className="px-6 py-4 text-gray-900 font-bold">{p.id}.</td>
+                    <td className="px-6 py-4 text-gray-900 font-medium ">{p.name}</td>
+                    <td className="px-6 py-4 text-gray-600">{p.age}</td>
+                    <td className="px-6 py-4 text-gray-600">{p.gender}</td>
+                    <td className="px-6 py-4 text-gray-600">{p.phone}</td>
+                    <td className="px-6 py-4 text-gray-600">{p.diseaseDepartment}</td>
+                    <td className="px-6 py-4 text-center">
+                      <div className="flex gap-2 justify-center">
+                        <motion.button
+                          onClick={() => handleEdit(p)}
+                          className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-1 px-3 rounded-lg hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Pencil size={14} />
+                        </motion.button>
+                        <motion.button
+                          onClick={() => handleDelete(p.id)}
+                          disabled={submitting}
+                          className="bg-gradient-to-r from-red-500 to-red-600 text-white py-1 px-3 rounded-lg hover:from-red-600 hover:to-red-700 font-semibold transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Trash2 size={14} />
+                        </motion.button>
+                      </div>
+                    </td>
+                  </motion.tr>
+                ))
+              ) : (
+                <motion.tr {...childVariants}>
+                  <td colSpan="6" className="px-6 py-12 text-center text-gray-500">
+                    <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                    <p>No patients found.</p>
+                  </td>
+                </motion.tr>
+              )}
+            </tbody>
+          </motion.table>
         )}
 
         {/* Pagination */}
