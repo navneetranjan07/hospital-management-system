@@ -25,7 +25,7 @@ export default function Navbar() {
       <nav className="bg-gradient-to-r main_bg text-white px-6 py-4 shadow-lg sticky top-0 z-50">
         <div className="flex justify-between items-center">
           {/* Logo */}
-           <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
             <Link to="/home"><FaUserMd className="text-2xl text-teal-300" /></Link>
             <div>
               <h1 className="text-xl cursor-pointer font-semibold tracking-wide">
@@ -44,25 +44,25 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-4 items-center">
             <Link
               to="/patients"
-              className="hover:text-blue-200 flex items-center p-1 gap-1 rounded-lg hover:scale-[1.03] hover:shadow-lg transition"
+              className=" flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"
             >
               <FaUserInjured /> Patients
             </Link>
             <Link
               to="/doctors"
-              className="hover:text-blue-200 flex items-center p-1 gap-1 rounded-lg hover:scale-[1.03] hover:shadow-lg transition"
+              className="flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"
             >
               <FaUserMd /> Doctors
             </Link>
             <Link
               to="/appointments"
-              className="hover:text-blue-200 flex items-center p-1 gap-1 rounded-lg hover:scale-[1.03] hover:shadow-lg transition"
+              className="flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"
             >
               <FaCalendarAlt /> Appointments
             </Link>
             <Link
               to="/departments"
-              className="hover:text-blue-200 flex items-center p-1 gap-1 rounded-lg hover:scale-[1.03] hover:shadow-lg transition"
+              className="flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"
             >
               <FaBuilding /> Disease Departments
             </Link>
@@ -89,7 +89,7 @@ export default function Navbar() {
         <div className="mobile-menu-side">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-white">Menu</h2>
-            
+
           </div>
           <Link
             to="/patients"
