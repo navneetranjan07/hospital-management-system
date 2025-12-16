@@ -231,6 +231,7 @@ export default function Departments() {
                       Delete
                     </motion.button>
                   </div>
+                  
                 </motion.div>
               ))
             ) : (

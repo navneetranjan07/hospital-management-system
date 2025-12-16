@@ -49,7 +49,7 @@ export default function Login() {
       setSuccessMsg("Welcome back!");
       setTimeout(() => {
         navigate("/home");
-      }, 1500);
+      }, 1000);
     } else {
       setError("Invalid credentials");
     }

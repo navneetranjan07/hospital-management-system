@@ -7,24 +7,49 @@ import toast from "react-hot-toast";
 
 export default function Patients() {
   const [patients, setPatients] = useState([]);
-  const [form, setForm] = useState({ id: "", name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });
+  const [form, setForm] = useState({ 
+    name: "",
+    age: "",
+    gender: "",
+    phone: "",
+    diseaseDepartment: ""
+  });
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+
   const baseUrl = "http://localhost:8787/patients";
 
   useEffect(() => {
-    fetchPatients();
+    fetchPatients(0);
   }, []);
 
-  const fetchPatients = async () => {
+  // Debounced search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!search.trim()) {
+        fetchPatients(0);
+      } else {
+        searchPatients(search);
+      }
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  const fetchPatients = async (p = 0) => {
     setLoading(true);
     try {
-      const res = await axios.get(`${baseUrl}/fetchall`);
-      setPatients(res.data);
+      const res = await axios.get(`${baseUrl}/fetch?page=${p}&size=6`);
+      const data = res.data;
+      // Spring Page object contains: content, totalPages, number
+      setPatients(data.content || []);
+      setTotalPages(data.totalPages || 0);
+      setPage(data.number || 0);
     } catch (err) {
       toast.error("Failed to fetch patients. Please try again.");
       console.error("Error fetching patients:", err);
@@ -33,21 +58,50 @@ export default function Patients() {
     }
   };
 
+  const searchPatients = async (keyword) => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${baseUrl}/search/all?keyword=${encodeURIComponent(keyword)}`);
+      setPatients(res.data);
+      setTotalPages(1);
+      setPage(0);
+    } catch (err) {
+      toast.error("Search failed. Please try again.");
+      console.error("Error searching patients:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+
+    const payload = {
+      name: form.name,
+      age: Number(form.age),
+      gender: form.gender,
+      phone: form.phone,
+      diseaseDepartment: form.diseaseDepartment
+    };
+
     try {
       if (editingId) {
-        await axios.put(`${baseUrl}/update/${editingId}`, form);
+        await axios.put(`${baseUrl}/update/${editingId}`, payload);
         toast.success("Patient updated successfully!");
         setEditingId(null);
       } else {
-        await axios.post(`${baseUrl}/save`, form);
+        await axios.post(`${baseUrl}/save`, payload);
         toast.success("Patient added successfully!");
       }
-      setForm({ id: "", name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });
+      setForm({ name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });
       setShowForm(false);
-      fetchPatients();
+      // Refresh current page
+      if (search.trim()) {
+        searchPatients(search);
+      } else {
+        fetchPatients(page);
+      }
     } catch (err) {
       toast.error("Failed to save patient. Please try again.");
       console.error("Error submitting form:", err);
@@ -57,7 +111,13 @@ export default function Patients() {
   };
 
   const handleEdit = (p) => {
-    setForm(p);
+    setForm({
+      name: p.name || "",
+      age: p.age || "",
+      gender: p.gender || "",
+      phone: p.phone || "",
+      diseaseDepartment: p.diseaseDepartment || ""
+    });
     setEditingId(p.id);
     setShowForm(true);
   };
@@ -68,7 +128,14 @@ export default function Patients() {
       try {
         await axios.delete(`${baseUrl}/delete/${id}`);
         toast.success("Patient deleted successfully!");
-        fetchPatients();
+        // Reload current page or search
+        if (search.trim()) {
+          searchPatients(search);
+        } else {
+          // if deleting last item on page, ensure not to request negative page
+          const newPage = (patients.length === 1 && page > 0) ? page - 1 : page;
+          fetchPatients(newPage);
+        }
       } catch (err) {
         toast.error("Failed to delete patient. Please try again.");
         console.error("Error deleting patient:", err);
@@ -77,13 +144,6 @@ export default function Patients() {
       }
     }
   };
-
-  const filteredPatients = patients.filter((p) =>
-    Object.values(p)
-      .join(" ")
-      .toLowerCase()
-      .includes(search.toLowerCase())
-  );
 
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
@@ -120,7 +180,7 @@ export default function Patients() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
-            placeholder="Search by name, ID, gender, or phone..."
+            placeholder="Search by name or department..."
             className="md:w-96 pl-10 pr-4 py-3 sm:py-2 px-6 sm:px-10 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -130,7 +190,7 @@ export default function Patients() {
           onClick={() => {
             setShowForm(!showForm);
             if (!showForm) {
-              setForm({ id: "", name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });
+              setForm({ name: "", age: "", gender: "", phone: "", diseaseDepartment: "" });
               setEditingId(null);
             }
           }}
@@ -141,59 +201,58 @@ export default function Patients() {
         </button>
       </div>
 
-
       <div className="max-w-6xl mx-auto px-4 py-4">
         {/* Form */}
-{showForm && (
-  <motion.form
-    onSubmit={handleSubmit}
-    className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
-    {...fadeInUp}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    {["id", "name", "age", "gender", "phone", "diseaseDepartment"].map((field) => (
-      <div key={field} className="relative">
-        {field === "gender" ? (
-          <select
-            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-            value={form.gender}
-            onChange={(e) => setForm({ ...form, gender: e.target.value })}
-            required
+        {showForm && (
+          <motion.form
+            onSubmit={handleSubmit}
+            className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
+            {...fadeInUp}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Others">Others</option>
-          </select>
+            {["name", "age", "gender", "phone", "diseaseDepartment"].map((field) => (
+              <div key={field} className="relative">
+                {field === "gender" ? (
+                  <select
+                    className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    value={form.gender}
+                    onChange={(e) => setForm({ ...form, gender: e.target.value })}
+                    required
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
 
-        ) : (
-          <input
-            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-            placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-            value={form[field]}
-            type={field === "age" ? "number" : "text"}
-            onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-            required
-          />
+                ) : (
+                  <input
+                    className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                    value={form[field]}
+                    type={field === "age" ? "number" : "text"}
+                    onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+                    required
+                  />
+                )}
+              </div>
+            ))}
+
+            <motion.button
+              type="submit"
+              className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
+              disabled={submitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
+              {editingId ? "Update Patient" : "Add Patient"}
+            </motion.button>
+          </motion.form>
         )}
-      </div>
-    ))}
-
-    <motion.button
-      type="submit"
-      className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
-      disabled={submitting}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
-      {editingId ? "Update Patient" : "Add Patient"}
-    </motion.button>
-  </motion.form>
-)}
-<hr />
+        <hr />
         {/* Patients Cards */}
         {loading ? (
           <motion.div
@@ -207,8 +266,8 @@ export default function Patients() {
             className="grid  mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
             {...containerVariants}
           >
-            {filteredPatients.length > 0 ? (
-              filteredPatients.map((p) => (
+            {patients && patients.length > 0 ? (
+              patients.map((p) => (
                 <motion.div
                   key={p.id}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1 overflow-hidden"
@@ -268,11 +327,41 @@ export default function Patients() {
                 {...childVariants}
               >
                 <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                <p>No patients found matching your search.</p>
+                <p>No patients found.</p>
               </motion.div>
             )}
           </motion.div>
         )}
+
+        {/* Pagination */}
+        <div className="flex justify-center gap-4 mt-6">
+          <button
+            disabled={page === 0}
+            onClick={() => {
+              const newPage = Math.max(0, page - 1);
+              fetchPatients(newPage);
+            }}
+            className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          <span className="px-4 py-2 bg-blue-200 rounded">
+            {totalPages === 0 ? 0 : page + 1} / {totalPages}
+          </span>
+
+          <button
+            disabled={page >= totalPages - 1 || totalPages === 0}
+            onClick={() => {
+              const newPage = Math.min(totalPages - 1, page + 1);
+              fetchPatients(newPage);
+            }}
+            className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+
       </div>
     </div>
   );
