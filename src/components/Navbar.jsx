@@ -125,8 +125,8 @@ export default function Navbar() {
     <>
 
     {/* first nav open */}
-      <nav className="bg-gray-600 w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
-        <div className=" flex w-5/6 justify-between items-center pr-10">
+      <nav className="bg-white w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
+        <div className=" flex w-9/12 justify-between items-center pr-10">
 
           <div>{localStorage.getItem("username") && (
             <span className="hidden md:block text-sm bg-white/10 px-3 rounded-full ml-4">
@@ -135,10 +135,10 @@ export default function Navbar() {
           )}</div>
 
           <div>
-            <Link to="/find-doctor" className="text-white px-4 py-2 text-sm hover:underline">Find a doctor</Link>
-            <Link to="/about-us" className="text-white px-4 py-2 text-sm hover:underline">About Us</Link>
-            <Link to="/careers" className="text-white px-4 py-2 text-sm hover:underline">Carrers</Link>
-            <Link to="/contact-us" className="text-white px-4 py-2 text-sm hover:underline">Contact us</Link>
+            <Link to="/find-doctor" className=" px-4 py-2 text-sm hover:underline">Find a doctor</Link>
+            <Link to="/about-us" className="px-4 py-2 text-sm hover:underline">About Us</Link>
+            <Link to="/careers" className=" px-4 py-2 text-sm hover:underline">Carrers</Link>
+            <Link to="/contact-us" className=" px-4 py-2 text-sm hover:underline">Contact us</Link>
             <select
               name="location"
               id="selectLocation"
@@ -159,11 +159,14 @@ export default function Navbar() {
           </div>
 
         </div>
+        <button onClick={handleLogout} className=" bg-yellow-800 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+              <FaSignOutAlt /> Logout
+            </button>
       </nav>
       {/* first nav close */}
 
       {/* second nav start */}
-      <nav className="bg-yellow-200 w-full py-3 flex justify-around items-center shadow-md sticky top-0 z-50 ">
+      <nav className="bg-white w-full py-3 flex justify-around items-center shadow-inner sticky top-0 z-50 ">
         <div>
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -384,7 +387,7 @@ export default function Navbar() {
       {/* second nav end */}
 
       {/* third nav start  */}
-      <nav className="bg-gradient-to-r main_bg text-white py-4 shadow-lg sticky top-16 z-30">
+      <nav className="bg-white py-4 shadow-inner sticky top-16 z-30">
 
         <div className="flex justify-between items-center">
 
@@ -411,10 +414,7 @@ export default function Navbar() {
 
             {/* <Link to="/departments" className="flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"            >
               <FaBuilding /> Disease Departments
-            </Link>
-            <button onClick={handleLogout} className="ml-4 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg flex items-center gap-2 transition hover:scale-[1.03]">
-              <FaSignOutAlt /> Logout
-            </button> */}
+            </Link> */}
           </div>
 
           {/* Mobile Menu Toggle */}
