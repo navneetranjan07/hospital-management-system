@@ -72,7 +72,7 @@ export default function HospitalInfo() {
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       {/* Header Section */}
-      <header className="relative bg-gradient-to-br min-h-screen -mt-16 md:-mt-20 from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden">
+      <header className="relative bg-gradient-to-br min-h-screen -mt-16 from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 max-w-6xl mx-auto mt-24 text-center">
