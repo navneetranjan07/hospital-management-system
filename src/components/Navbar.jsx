@@ -106,11 +106,17 @@ export default function Navbar() {
     "Health Checkup",
   ];
 
-  const patientCornerData = [
-    "Patient Services",
-    "Patient Rights & Responsibilities",
-    "Billing Information",
-    "Insurance & Cashless Services",
+    const patientCornerData = [
+    {
+      label: "Patients",
+      to: "/patients",
+      icon: <FaUserInjured />,
+      isLink: true,
+    },
+    { label: "Patient Services" },
+    { label: "Patient Rights & Responsibilities" },
+    { label: "Billing Information" },
+    { label: "Insurance & Cashless Services" },
   ];
 
 
@@ -125,7 +131,7 @@ export default function Navbar() {
     <>
 
     {/* first nav open */}
-      <nav className="bg-white w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
+      <nav className="bg-blue-100 w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
         <div className=" flex w-9/12 justify-between items-center pr-10">
 
           <div>{localStorage.getItem("username") && (
@@ -159,23 +165,23 @@ export default function Navbar() {
           </div>
 
         </div>
-        <button onClick={handleLogout} className=" bg-yellow-800 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+        <button onClick={handleLogout} className=" bg-indigo-700 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
               <FaSignOutAlt /> Logout
             </button>
       </nav>
       {/* first nav close */}
 
       {/* second nav start */}
-      <nav className="bg-white w-full py-3 flex justify-around items-center shadow-inner sticky top-0 z-50 ">
+      <nav className="bg-blue-200 w-full py-3 flex justify-around items-center shadow-inner sticky top-0 z-50 ">
         <div>
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Link to="/home"><FaUserMd className="text-2xl text-teal-300" /></Link>
+            <Link to="/home"><FaUserMd className="text-2xl text-indigo-900" /></Link>
             <div>
               <h1 className="text-xl cursor-pointer font-semibold tracking-wide">
                 <Link to="/home">CityCare Hospital</Link>
               </h1>
-              <p className="text-sm text-teal-200 opacity-80"><Link to="/home">Your Health, Our Priority</Link></p>
+              <p className="text-sm text-indigo-900 opacity-80"><Link to="/home">Your Health, Our Priority</Link></p>
             </div>
           </div>
         </div>
@@ -354,30 +360,39 @@ export default function Navbar() {
           </div>
           {/* medical section end */}
 
-          {/* Media center */}
-          <div className="relative group">
+          {/* Patient center */}
+           <div className="relative group">
             <button className="flex gap-1 items-center">
-              Media Centre <FaAngleDown />
+              Patient Centre <FaAngleDown />
             </button>
 
-            {/* ============ MEDIA CENTRE DROPDOWN ============ */}
             <div className="absolute left-0 top-full hidden group-hover:block z-[999] pt-3">
               <div className="w-[260px] bg-white shadow-xl rounded-md overflow-hidden">
-
-                {patientCornerData.map((item, index) => (
-                  <div
-                    key={index}
-                    className="px-5 py-3 text-sm cursor-pointer
-                     hover:bg-gray-100 hover:text-orange-600 transition"
-                  >
-                    {item}
-                  </div>
-                ))}
-
+                {patientCornerData.map((item, index) =>
+                  item.isLink ? (
+                    <Link
+                      key={index}
+                      to={item.to}
+                      className="flex items-center gap-2 px-5 py-3 text-sm
+                      hover:bg-gray-100 hover:text-blue-600 transition"
+                    >
+                      {item.icon}
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <div
+                      key={index}
+                      className="px-5 py-3 text-sm cursor-pointer
+                      hover:bg-gray-100 hover:text-orange-600 transition"
+                    >
+                      {item.label}
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
-          {/* media center end */}
+          {/* patient center end */}
 
 
 
@@ -387,7 +402,7 @@ export default function Navbar() {
       {/* second nav end */}
 
       {/* third nav start  */}
-      <nav className="bg-white py-4 shadow-inner sticky top-16 z-30">
+      <nav className="bg-blue-100 py-4 shadow-inner sticky top-16 z-30">
 
         <div className="flex justify-between items-center">
 
@@ -404,7 +419,7 @@ export default function Navbar() {
               <FaUserMd /> Doctors
             </Link> */}
             <Link
-              to="/appointments" className="flex bg-yellow-800 items-center px-6 py-1 gap-2 rounded-3xl  transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+              to="/appointments" className="flex bg-green-500/60 items-center px-6 py-1 gap-2 rounded-3xl  transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
               <FaCalendarCheck /> Book Appointments
             </Link>
             <Link
