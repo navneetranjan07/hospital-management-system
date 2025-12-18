@@ -1,0 +1,40 @@
+import DepartmentLayout from "./DepartmentLayout";
+
+export default function GastroenterologyAndHepatobiliary() {
+  return (
+    <DepartmentLayout
+      title="Gastroenterology & Hepatobiliary Sciences"
+      intro="This department provides comprehensive care for disorders of the digestive system, liver, pancreas, and biliary tract with advanced endoscopic and surgical expertise."
+
+      conditions={[
+        "Acid Reflux & GERD",
+        "Irritable Bowel Syndrome (IBS)",
+        "Inflammatory Bowel Disease (IBD)",
+        "Liver Cirrhosis",
+        "Pancreatitis",
+        "Gall Bladder Disorders",
+      ]}
+
+      services={[
+        "Upper & Lower GI Endoscopy",
+        "ERCP & EUS",
+        "Liver Disease Management",
+        "Advanced GI Surgery Support",
+      ]}
+
+      technologies={[
+        "High-Definition Endoscopy",
+        "Endoscopic Ultrasound (EUS)",
+        "Advanced Hepatology Labs",
+      ]}
+
+      doctors={[
+        {
+          name: "Dr. Ashish Kumar",
+          designation: "Senior Gastroenterologist",
+          experience: "25+ years experience",
+        },
+      ]}
+    />
+  );
+}

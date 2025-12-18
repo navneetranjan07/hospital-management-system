@@ -2,6 +2,8 @@ export default function ContactUs() {
   return (
     <div className="bg-gray-50">
 
+      
+
       {/* ================= HERO ================= */}
       <div className="relative bg-gradient-to-r from-gray-200 to-gray-100 px-10 py-16">
         <div className="max-w-xl bg-white p-6 rounded-xl shadow">
@@ -9,6 +11,7 @@ export default function ContactUs() {
           <p className="text-gray-600">For all types of queries</p>
         </div>
       </div>
+      
 
       {/* ================= CONTACT CARD ================= */}
       <div className="px-10 -mt-12">

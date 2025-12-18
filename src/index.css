@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .main_bg {
-  background: linear-gradient(145deg, #42a0ff, #000000);
+  background: linear-gradient(145deg, #b6ebf4, #fafafa00);
 }
 
 @keyframes fadeIn {

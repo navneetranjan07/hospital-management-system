@@ -1,6 +1,84 @@
+import { motion } from "framer-motion";
+
 export default function Careers() {
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const containerVariants = {
+    initial: { opacity: 0 },
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    },
+    viewport: { once: true }
+  };
+
+  const childVariants = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
     <div className="bg-gray-50">
+
+      {/* Mission and Vision */}
+      <motion.section
+        className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50"
+        {...fadeInUp}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-blue-700 mb-12">Our Mission & Vision</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
+              {...childVariants}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Mission</h3>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                To deliver quality and compassionate healthcare with integrity and innovation,
+                ensuring the best outcomes for every patient we serve.
+              </p>
+            </motion.div>
+            <motion.div
+              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
+              {...childVariants}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Vision</h3>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                To be a trusted global leader in healthcare excellence, advancing medical research
+                and providing accessible, affordable, and ethical care to all.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
 
       {/* ================= HERO ================= */}
       <div className="relative bg-white">

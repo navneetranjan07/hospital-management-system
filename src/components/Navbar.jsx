@@ -13,16 +13,25 @@ import {
   FaStethoscope,
   FaAngleDown
 } from "react-icons/fa";
+import { Stethoscope } from "lucide-react";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-    const handleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("username");
     navigate("/login");
   };
+
+  const toSlug = (text) =>
+    text
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
 
 
   const hospitalData = {
@@ -60,7 +69,6 @@ export default function Navbar() {
     "Thoracic Surgery",
 
     "ENT",
-    "Gastroenterology & Hepatobiliary Sciences",
     "Dermatology",
     "Haematology",
     "Medical Genetics",
@@ -113,10 +121,16 @@ export default function Navbar() {
     "Health Checkup",
   ];
 
-    const patientCornerData = [
+  const patientCornerData = [
     {
       label: "Patients",
       to: "/patients",
+      icon: <FaUserInjured />,
+      isLink: true,
+    },
+    {
+      label: "Doctors",
+      to: "/doctors",
       icon: <FaUserInjured />,
       isLink: true,
     },
@@ -132,7 +146,7 @@ export default function Navbar() {
   return (
     <>
 
-    {/* first nav open */}
+      {/* first nav open */}
       <nav className="bg-blue-100 w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
         <div className=" flex w-9/12 justify-between items-center pr-10">
 
@@ -168,8 +182,8 @@ export default function Navbar() {
 
         </div>
         <button onClick={handleLogout} className=" bg-indigo-700 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
-              <FaSignOutAlt /> Logout
-            </button>
+          <FaSignOutAlt /> Logout
+        </button>
       </nav>
       {/* first nav close */}
 
@@ -266,20 +280,23 @@ export default function Navbar() {
                 <div className="grid grid-cols-4 gap-x-10 gap-y-3 text-sm">
 
                   {specialtiesData.map((item, index) => (
-                    <div
+                    <Link
                       key={index}
+                      to={`/departments/${toSlug(item)}`}
                       className="flex items-center justify-between cursor-pointer
-                       hover:text-orange-600 transition group"
+               hover:text-orange-600 transition group"
                     >
                       <span className="flex items-center gap-3">
-                        <span className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xs">
-                          +
+                        <span className="w-6 h-6 rounded-full bg-purple-100
+                       flex items-center justify-center text-purple-600 text-xs">
+                          <Stethoscope size={12} />
                         </span>
                         {item}
                       </span>
                       <span className="opacity-0 group-hover:opacity-100 transition">›</span>
-                    </div>
+                    </Link>
                   ))}
+
 
                 </div>
               </div>
@@ -363,7 +380,7 @@ export default function Navbar() {
           {/* medical section end */}
 
           {/* Patient center */}
-           <div className="relative group">
+          <div className="relative group">
             <button className="flex gap-1 items-center">
               Patient Centre <FaAngleDown />
             </button>
@@ -404,7 +421,7 @@ export default function Navbar() {
       {/* second nav end */}
 
       {/* third nav start  */}
-      <nav className="bg-blue-100 py-4 shadow-inner sticky top-16 z-30">
+      <nav className="bg-blue-100 backdrop-blur-sm py-4 shadow-inner sticky top-16 z-30">
 
         <div className="flex justify-between items-center">
 

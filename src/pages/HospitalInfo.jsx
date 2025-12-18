@@ -72,12 +72,11 @@ export default function HospitalInfo() {
   return (
     <div className="bg-gray-50 text-gray-800 ">
       {/* Header Section */}
-      <header className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white py-16 md:py-24 px-4 md:px-16 overflow-hidden">
+      <header className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-1 gap-1">
+        <div className="relative z-10 max-w-6xl mx-auto text-center py-6">
+            <div className="inline-flex items-center px-6  bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-1 gap-1">
               <svg className="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
@@ -88,11 +87,10 @@ export default function HospitalInfo() {
               <br />
               Multispeciality Hospital
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-blue-100 leading-relaxed">
               Committed to delivering compassionate care with cutting-edge technology and a team of dedicated professionals.
             </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base">
              <Link to="/appointments">Book Appointment</Link>
             </button>
@@ -119,151 +117,14 @@ export default function HospitalInfo() {
               </svg>
               <span>100+ Specialists</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </header>
 
-      {/* About Section */}
-      <motion.section
-        className="py-8 md:py-16 px-4 md:px-16 bg-white shadow-lg"
-        {...fadeInUp}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <p className="text-lg leading-relaxed">
-                  Leading healthcare institution with advanced technology and dedicated professionals.
-                </p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-                <p className="text-lg leading-relaxed">
-                  Focused on patient care, innovation, and community wellness.
-                </p>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-2xl shadow-md">
-              <p className="text-lg leading-relaxed mb-4">
-                Established in 1995, we have grown into a 500-bed tertiary care center offering services
-                across various medical fields including cardiology, neurology, orthopedics, oncology,
-                pediatrics, and emergency medicine.
-              </p>
-              <div className="flex items-center justify-center space-x-4">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">500+</div>
-                  <div className="text-sm text-gray-600">Beds</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-teal-600">25+</div>
-                  <div className="text-sm text-gray-600">Years</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">100+</div>
-                  <div className="text-sm text-gray-600">Doctors</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
+      
 
-      {/* Mission and Vision */}
-      <motion.section
-        className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50"
-        {...fadeInUp}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-700 mb-12">Our Mission & Vision</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
-              {...childVariants}
-            >
-              <div className="flex items-center justify-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Mission</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                To deliver quality and compassionate healthcare with integrity and innovation,
-                ensuring the best outcomes for every patient we serve.
-              </p>
-            </motion.div>
-            <motion.div
-              className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border border-blue-100/50"
-              {...childVariants}
-            >
-              <div className="flex items-center justify-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-blue-600 mb-4 text-center">Our Vision</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                To be a trusted global leader in healthcare excellence, advancing medical research
-                and providing accessible, affordable, and ethical care to all.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Departments */}
-      <motion.section
-        id="departments"
-        className="py-16 px-6 md:px-16 bg-white"
-        {...fadeInUp}
-      >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-700 mb-8 text-center">Departments & Specialties</h2>
-          <motion.div
-            className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
-            {...containerVariants}
-          >
-            {[
-              { name: "Cardiology", icon: "❤️" },
-              { name: "Neurology", icon: "🧠" },
-              { name: "Orthopedics", icon: "🦴" },
-              { name: "Oncology", icon: "🎗️" },
-              { name: "Pediatrics", icon: "👶" },
-              { name: "Gynecology", icon: "🤰" },
-              { name: "Dermatology", icon: "🧴" },
-              { name: "Urology", icon: "🩺" },
-              { name: "Emergency Medicine", icon: "🚑" },
-            ].map((dept, index) => (
-              <motion.div
-                key={dept.name}
-                onClick={() => handleDepartmentClick(dept.name)}
-                className="p-6 bg-gradient-to-br from-blue-50 to-teal-50 border border-blue-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br hover:from-blue-100 hover:to-teal-100 transform hover:-translate-y-1 cursor-pointer"
-                {...childVariants}
-              >
-                <div className="text-4xl mb-4 text-center">{dept.icon}</div>
-                <h3 className="text-xl font-bold text-blue-800 mb-2 text-center">{dept.name}</h3>
-                <p className="text-gray-600 text-sm text-center">
-                  Our {dept.name.toLowerCase()} department is equipped with advanced facilities and
-                  experienced specialists providing world-class care.
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+      
+      
 
       {/* Doctors */}
       <motion.section
@@ -366,17 +227,7 @@ export default function HospitalInfo() {
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl border border-blue-100">
-              <iframe
-                title="Hospital Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0344739699!2d73.86296739999999!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1760372100105!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
-            </div>
+            
           </div>
 
           {/* Contact Form */}

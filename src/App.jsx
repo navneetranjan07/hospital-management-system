@@ -9,20 +9,59 @@ import Doctors from "./pages/Doctors";
 import Appointments from "./pages/Appointments";
 import Departments from "./pages/diseaseDepartments";
 import HospitalInfo from "./pages/HospitalInfo"
-import Cardiology from "./pages/departments/Cardiology";
-import Neurology from "./pages/departments/Neurology";
-import Orthopedics from "./pages/departments/Orthopedics";
-import Oncology from "./pages/departments/Oncology";
-import Pediatrics from "./pages/departments/Pediatrics";
-import Dermatology from "./pages/departments/Dermatology";
-import Gynecology from "./pages/departments/Gynecology";
-import EmergencyMedicine from "./pages/departments/EmergencyMedicine";
-import Urology from "./pages/departments/Urology";
 
 import FindDoctor from "./pages/firstNavbar/FindDoctor";
 import AboutUs from "./pages/firstNavbar/AboutUs";
 import Carrers from "./pages/firstNavbar/Carrers";
 import Contactus from "./pages/firstNavbar/ContactUs";
+
+// departments
+import CardiacSciences from "./pages/departments/CardiacScience";
+import InfertilityMedicine from "./pages/departments/InfertilityMedicine";
+import DentalScience from "./pages/departments/DentalScience";
+import EndocrineSurgery from "./pages/departments/EndocrineSurgery";
+import GeriatricMedicine from "./pages/departments/GeriatricMedicine";
+import LiverTransplant from "./pages/departments/LiverTransplant";
+
+import Neurology from "./pages/departments/Neurology";
+import Ophthalmology from "./pages/departments/Ophthalmology";
+import PainAndPalliativeMedicine from "./pages/departments/PainAndPalliativeMedicine";
+import Pulmonology from "./pages/departments/Pulmonology";
+import ThoracicSurgery from "./pages/departments/ThoracicSurgery";
+import ENT from "./pages/departments/ENT";
+
+import Dermatology from "./pages/departments/Dermatology";
+import Haematology from "./pages/departments/Haematology";
+import MedicalGenetics from "./pages/departments/MedicalGenetics";
+import Neurosurgery from "./pages/departments/Neurosurgery";
+import OrganTransplant from "./pages/departments/OrganTransplant";
+
+import PalliativeMedicine from "./pages/departments/PalliativeMedicine";
+import Radiology from "./pages/departments/Radiology";
+import TransfusionMedicine from "./pages/departments/TransfusionMedicine";
+import GeneralSurgery from "./pages/departments/GeneralSurgery";
+import Nephrology from "./pages/departments/Nephrology";
+import DiabetologyAndEndocrinology from "./pages/departments/DiabetologyAndEndocrinology";
+
+import FoetalMedicine from "./pages/departments/FoetalMedicine";
+import InfectiousDiseases from "./pages/departments/InfectiousDiseases";
+import MentalHealthAndBehaviouralSciences from "./pages/departments/MentalHealthAndBehaviouralSciences";
+import Oncology from "./pages/departments/Oncology";
+import Orthopaedics from "./pages/departments/Orthopaedics";
+import PhysiotherapyAndRehabilitation from "./pages/departments/PhysiotherapyAndRehabilitation";
+
+import Rheumatology from "./pages/departments/Rheumatology";
+import Urology from "./pages/departments/Urology";
+import CriticalCare from "./pages/departments/CriticalCare";
+import EmergencyAndTrauma from "./pages/departments/EmergencyAndTrauma";
+import InternalMedicine from "./pages/departments/InternalMedicine";
+import NeurointerventionalRadiology from "./pages/departments/NeurointerventionalRadiology";
+import ObstetricsAndGynaecology from "./pages/departments/ObstetricsAndGynaecology";
+import Paediatrics from "./pages/departments/Paediatrics";
+import PlasticAndReconstructiveSurgery from "./pages/departments/PlasticAndReconstructiveSurgery";
+import SupportSpecialities from "./pages/departments/SupportSpecialities";
+import VascularSurgery from "./pages/departments/VascularSurgery";
+
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -53,15 +92,51 @@ function App() {
                   <Route path="/doctors" element={<Doctors />} />
                   <Route path="/appointments" element={<Appointments />} />
                   <Route path="/departments" element={<Departments />} />
-                  <Route path="/departments/cardiology" element={<Cardiology />} />
-                  <Route path="/departments/neurology" element={<Neurology />} />
-                  <Route path="/departments/orthopedics" element={<Orthopedics />} />
-                  <Route path="/departments/oncology" element={<Oncology />} />
-                  <Route path="/departments/pediatrics" element={<Pediatrics />} />
-                  <Route path="/departments/dermatology" element={<Dermatology />} />
-                  <Route path="/departments/gynecology" element={<Gynecology />} />
-                  <Route path="/departments/emergency-medicine" element={<EmergencyMedicine />} />
-                  <Route path="/departments/urology" element={<Urology />} />
+                  <Route path="/departments/cardiac-sciences" element={<CardiacSciences />} />
+<Route path="/departments/infertility-medicine" element={<InfertilityMedicine />} />
+<Route path="/departments/dental-science" element={<DentalScience />} />
+<Route path="/departments/endocrine-surgery" element={<EndocrineSurgery />} />
+<Route path="/departments/geriatric-medicine" element={<GeriatricMedicine />} />
+<Route path="/departments/liver-transplant-and-hepatobiliary-sciences" element={<LiverTransplant />} />
+
+<Route path="/departments/neurology" element={<Neurology />} />
+<Route path="/departments/ophthalmology" element={<Ophthalmology />} />
+<Route path="/departments/pain-and-palliative-medicine" element={<PainAndPalliativeMedicine />} />
+<Route path="/departments/pulmonology" element={<Pulmonology />} />
+<Route path="/departments/thoracic-surgery" element={<ThoracicSurgery />} />
+<Route path="/departments/ent" element={<ENT />} />
+
+<Route path="/departments/dermatology" element={<Dermatology />} />
+<Route path="/departments/haematology" element={<Haematology />} />
+<Route path="/departments/medical-genetics" element={<MedicalGenetics />} />
+<Route path="/departments/neurosurgery" element={<Neurosurgery />} />
+<Route path="/departments/organ-transplant" element={<OrganTransplant />} />
+
+<Route path="/departments/palliative-medicine" element={<PalliativeMedicine />} />
+<Route path="/departments/radiology" element={<Radiology />} />
+<Route path="/departments/transfusion-medicine" element={<TransfusionMedicine />} />
+<Route path="/departments/general-surgery" element={<GeneralSurgery />} />
+<Route path="/departments/nephrology" element={<Nephrology />} />
+<Route path="/departments/diabetology-endocrinology" element={<DiabetologyAndEndocrinology />} />
+
+<Route path="/departments/foetal-medicine" element={<FoetalMedicine />} />
+<Route path="/departments/infectious-diseases" element={<InfectiousDiseases />} />
+<Route path="/departments/mental-health-behavioural-sciences" element={<MentalHealthAndBehaviouralSciences />} />
+<Route path="/departments/oncology" element={<Oncology />} />
+<Route path="/departments/orthopaedics" element={<Orthopaedics />} />
+<Route path="/departments/physiotherapy-rehabilitation" element={<PhysiotherapyAndRehabilitation />} />
+
+<Route path="/departments/rheumatology" element={<Rheumatology />} />
+<Route path="/departments/urology" element={<Urology />} />
+<Route path="/departments/critical-care" element={<CriticalCare />} />
+<Route path="/departments/emergency-trauma" element={<EmergencyAndTrauma />} />
+<Route path="/departments/internal-medicine" element={<InternalMedicine />} />
+<Route path="/departments/neurointerventional-radiology" element={<NeurointerventionalRadiology />} />
+<Route path="/departments/obstetrics-gynaecology" element={<ObstetricsAndGynaecology />} />
+<Route path="/departments/paediatrics" element={<Paediatrics />} />
+<Route path="/departments/plastic-reconstructive-surgery" element={<PlasticAndReconstructiveSurgery />} />
+<Route path="/departments/support-specialities" element={<SupportSpecialities />} />
+<Route path="/departments/vascular-surgery" element={<VascularSurgery />} />
                 </Routes>
               </>
             </ProtectedRoute>
