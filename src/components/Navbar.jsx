@@ -18,6 +18,13 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+    const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
+    navigate("/login");
+  };
+
+
   const hospitalData = {
     "North India": {
       Delhi: [
@@ -121,11 +128,6 @@ export default function Navbar() {
 
 
 
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("username");
-    navigate("/login");
-  };
 
   return (
     <>
