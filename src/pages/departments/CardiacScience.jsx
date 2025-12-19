@@ -4,6 +4,7 @@ export default function CardiacSciences() {
   return (
     <DepartmentLayout
       title="Cardiac Sciences"
+      specialization="Cardiac Sciences"
       intro="The Cardiac Sciences department provides comprehensive heart care with advanced diagnostics, interventional cardiology, and cardiac surgery under one roof."
 
       conditions={[
@@ -28,19 +29,6 @@ export default function CardiacSciences() {
         "Intravascular Ultrasound (IVUS)",
         "Robotic Cardiac Surgery",
         "Advanced Cardiac ICU",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Ajay Kaul",
-          designation: "Chairman – Cardiac Sciences",
-          experience: "35+ years experience",
-        },
-        {
-          name: "Dr. Manjinder Sandhu",
-          designation: "Principal Director – Cardiology",
-          experience: "30+ years experience",
-        },
       ]}
     />
   );

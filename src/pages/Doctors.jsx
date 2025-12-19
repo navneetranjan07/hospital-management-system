@@ -50,7 +50,7 @@ export default function Doctors() {
         await axios.post(`${baseUrl}/save`, form);
         toast.success("Doctor added successfully!");
       }
-      setForm({ id: "", name: "", specialization: "", phone: "" });
+      setForm({name: "", specialization: "", phone: "" });
       setShowForm(false);
       fetchDoctors();
     } catch (err) {
@@ -158,7 +158,7 @@ export default function Doctors() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {["id", "name", "specialization", "phone"].map((field) => (
+            {["name", "specialization", "phone"].map((field) => (
               <div key={field} className="relative">
                 <input
                   className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
