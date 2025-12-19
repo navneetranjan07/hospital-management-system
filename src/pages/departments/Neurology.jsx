@@ -1,39 +1,16 @@
 import DepartmentLayout from "./DepartmentLayout";
 
-export default function Neurology() {
+export default function Neurosurgery() {
   return (
     <DepartmentLayout
-      title="Neurology"
-      intro="The Neurology department offers advanced diagnosis and treatment for disorders of the brain, spine, nerves, and muscles."
-
-      conditions={[
-        "Stroke",
-        "Epilepsy",
-        "Parkinson’s Disease",
-        "Multiple Sclerosis",
-        "Headache & Migraine",
-        "Neuromuscular Disorders",
-      ]}
+      title="Neurosurgery"
+      specialization="Neurosurgery"
+      intro="Advanced surgical care for brain, spine, and nervous system disorders."
 
       services={[
-        "Stroke Thrombolysis & Thrombectomy",
-        "Epilepsy Management",
-        "Movement Disorder Clinics",
-        "Neuro Rehabilitation",
-      ]}
-
-      technologies={[
-        "Advanced MRI & CT Neuro Imaging",
-        "EEG & EMG Labs",
-        "Neuro ICU",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. P. N. Renjen",
-          designation: "Senior Neurologist",
-          experience: "30+ years experience",
-        },
+        "Brain Tumor Surgery",
+        "Spine Surgery",
+        "Minimally Invasive Neurosurgery",
       ]}
     />
   );

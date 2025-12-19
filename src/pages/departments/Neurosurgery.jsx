@@ -4,35 +4,34 @@ export default function Neurosurgery() {
   return (
     <DepartmentLayout
       title="Neurosurgery"
-      intro="The Neurosurgery department offers surgical treatment for complex disorders of the brain, spine, and nervous system using minimally invasive techniques."
+      specialization="Neurosurgery"
+      intro="The Neurosurgery department provides advanced surgical care for disorders of the brain, spine, and nervous system, combining precision surgery with cutting-edge technology for optimal outcomes."
 
       conditions={[
         "Brain Tumors",
-        "Spinal Disorders",
-        "Head Injury",
+        "Spinal Cord Injuries",
+        "Degenerative Spine Disorders",
+        "Traumatic Brain Injury",
         "Hydrocephalus",
-        "Disc Prolapse",
+        "Neurovascular Disorders",
+        "Congenital Nervous System Disorders",
       ]}
 
       services={[
         "Brain Tumor Surgery",
-        "Spine Surgery",
-        "Minimally Invasive Neurosurgery",
-        "Neuro Trauma Care",
+        "Minimally Invasive Spine Surgery",
+        "Endoscopic Neurosurgery",
+        "Neuro Trauma Surgery",
+        "CSF Shunt Procedures",
+        "Functional Neurosurgery",
       ]}
 
       technologies={[
         "Neuronavigation Systems",
-        "Intraoperative MRI",
-        "Neuro ICU",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Rana Patir",
-          designation: "Senior Neurosurgeon",
-          experience: "35+ years experience",
-        },
+        "Intraoperative MRI & CT",
+        "High-End Surgical Microscopes",
+        "Endoscopic Neurosurgical Tools",
+        "Advanced Neuro ICUs",
       ]}
     />
   );

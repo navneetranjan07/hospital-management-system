@@ -4,32 +4,34 @@ export default function NeurointerventionalRadiology() {
   return (
     <DepartmentLayout
       title="Neurointerventional Radiology"
-      intro="This specialty provides minimally invasive, image-guided treatment for complex brain and spine disorders."
+      specialization="Neurointerventional Radiology"
+      intro="The Neurointerventional Radiology department offers minimally invasive, image-guided treatments for complex brain, spine, and vascular disorders, providing advanced care with faster recovery and improved outcomes."
 
       conditions={[
         "Brain Aneurysms",
-        "Stroke",
-        "AV Malformations",
+        "Arteriovenous Malformations (AVMs)",
+        "Ischemic Stroke",
+        "Hemorrhagic Stroke",
+        "Carotid Artery Stenosis",
         "Spinal Vascular Disorders",
+        "Brain Tumors (Vascular)",
       ]}
 
       services={[
-        "Endovascular Stroke Therapy",
-        "Aneurysm Coiling",
-        "AVM Embolization",
+        "Mechanical Thrombectomy for Stroke",
+        "Aneurysm Coiling & Flow Diversters",
+        "AVM & AV Fistula Embolization",
+        "Carotid & Intracranial Stenting",
+        "Tumor Embolization",
+        "Spinal Angiography & Interventions",
       ]}
 
       technologies={[
         "Biplane Cath Labs",
-        "3D Neuro Imaging Systems",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Aditya Gupta",
-          designation: "Neurointervention Specialist",
-          experience: "15+ years experience",
-        },
+        "Advanced Digital Subtraction Angiography (DSA)",
+        "3D Rotational Angiography",
+        "AI-Assisted Imaging Analysis",
+        "High-Resolution Neuro Imaging",
       ]}
     />
   );

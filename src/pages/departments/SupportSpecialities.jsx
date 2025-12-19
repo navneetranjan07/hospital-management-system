@@ -4,30 +4,13 @@ export default function SupportSpecialities() {
   return (
     <DepartmentLayout
       title="Support Specialities"
-      intro="Support Specialities provide essential allied healthcare services that strengthen diagnosis, treatment, and patient recovery."
-
-      conditions={[
-        "Nutrition Needs",
-        "Speech Disorders",
-        "Rehabilitation Support",
-      ]}
+      specialization="Support Specialities"
+      intro="Essential medical support services for accurate diagnosis and recovery."
 
       services={[
-        "Diet & Nutrition Counseling",
-        "Speech Therapy",
-        "Occupational Therapy",
-      ]}
-
-      technologies={[
-        "Multidisciplinary Care Coordination",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Ritu Gupta",
-          designation: "Clinical Nutritionist",
-          experience: "15+ years experience",
-        },
+        "Physiotherapy",
+        "Nutrition & Dietetics",
+        "Radiology",
       ]}
     />
   );

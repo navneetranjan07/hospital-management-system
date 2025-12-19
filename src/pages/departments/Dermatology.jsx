@@ -4,36 +4,34 @@ export default function Dermatology() {
   return (
     <DepartmentLayout
       title="Dermatology"
-      intro="Dermatology department offers medical, surgical, and cosmetic treatments for skin, hair, and nail disorders."
+      specialization="Dermatology"
+      intro="The Dermatology department offers comprehensive care for skin, hair, and nail disorders with advanced medical and cosmetic dermatology services."
 
       conditions={[
-        "Acne & Scarring",
+        "Acne & Acne Scars",
         "Psoriasis",
-        "Eczema",
-        "Hair Loss",
+        "Eczema & Dermatitis",
+        "Vitiligo",
         "Skin Infections",
-        "Pigmentation Disorders",
+        "Hair Fall & Alopecia",
+        "Skin Allergies",
       ]}
 
       services={[
         "Medical Dermatology",
-        "Laser Treatments",
         "Cosmetic Dermatology",
-        "Hair Transplantation",
+        "Laser Skin Treatments",
+        "Chemical Peels",
+        "Skin Biopsy",
+        "Hair & Scalp Treatments",
       ]}
 
       technologies={[
-        "Laser Therapy Systems",
-        "Digital Dermoscopy",
-        "Advanced Cosmetic Equipment",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Rashmi Shetty",
-          designation: "Senior Dermatologist",
-          experience: "20+ years experience",
-        },
+        "Advanced Laser Therapy",
+        "Dermatoscopy",
+        "Phototherapy (UV Therapy)",
+        "Cryotherapy",
+        "Radiofrequency Skin Tightening",
       ]}
     />
   );

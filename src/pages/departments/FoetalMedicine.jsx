@@ -4,34 +4,31 @@ export default function FoetalMedicine() {
   return (
     <DepartmentLayout
       title="Foetal Medicine"
-      intro="Foetal Medicine focuses on monitoring, diagnosing, and managing high-risk pregnancies and foetal abnormalities with advanced prenatal care."
+      specialization="Foetal Medicine"
+      intro="The Foetal Medicine department focuses on the health of the unborn baby, offering advanced prenatal diagnostics, monitoring, and interventions to ensure the best outcomes for both mother and child."
 
       conditions={[
         "High-Risk Pregnancy",
-        "Foetal Growth Restriction",
-        "Congenital Foetal Anomalies",
+        "Foetal Growth Restriction (IUGR)",
+        "Congenital Anomalies",
+        "Genetic & Chromosomal Disorders",
         "Multiple Pregnancies",
+        "Maternal Medical Disorders Affecting Pregnancy",
       ]}
 
       services={[
-        "Detailed Anomaly Scan",
+        "Advanced Foetal Ultrasound & Doppler",
+        "Prenatal Genetic Screening & Counselling",
         "Foetal Echocardiography",
-        "Prenatal Genetic Screening",
-        "Invasive Foetal Procedures",
+        "Amniocentesis & CVS",
+        "High-Risk Pregnancy Monitoring",
       ]}
 
       technologies={[
-        "High-Resolution Ultrasound",
-        "3D / 4D Foetal Imaging",
-        "Advanced Prenatal Diagnostic Labs",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Sangeeta Gomes",
-          designation: "Foetal Medicine Specialist",
-          experience: "18+ years experience",
-        },
+        "4D & Level-II Ultrasound",
+        "Advanced Foetal Monitoring Systems",
+        "Prenatal Genetic Testing Labs",
+        "Multidisciplinary Foetal Care Units",
       ]}
     />
   );

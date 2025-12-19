@@ -4,34 +4,33 @@ export default function Radiology() {
   return (
     <DepartmentLayout
       title="Radiology"
-      intro="Radiology provides advanced diagnostic imaging services supporting accurate diagnosis and treatment planning across all medical specialties."
+      specialization="Radiology"
+      intro="The Radiology department provides accurate diagnosis through advanced imaging technologies, enabling early detection, precise treatment planning, and continuous monitoring of medical conditions."
 
       conditions={[
-        "Cancer Diagnosis",
-        "Neurological Disorders",
-        "Orthopedic Injuries",
-        "Cardiac Conditions",
+        "Bone & Joint Disorders",
+        "Neurological Conditions",
+        "Chest & Lung Diseases",
+        "Abdominal & Pelvic Disorders",
+        "Cancer Imaging & Staging",
+        "Vascular Abnormalities",
       ]}
 
       services={[
-        "X-Ray & Ultrasound",
+        "X-Ray & Digital Radiography",
+        "Ultrasound & Doppler Studies",
         "CT Scan & MRI",
         "Interventional Radiology",
-        "Image Guided Biopsies",
+        "Mammography",
+        "Image-Guided Biopsies",
       ]}
 
       technologies={[
-        "3 Tesla MRI",
-        "128 Slice CT Scanner",
-        "Digital PACS System",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Sanjay Gupta",
-          designation: "Senior Radiologist",
-          experience: "22+ years experience",
-        },
+        "High-Resolution MRI Systems",
+        "Multi-Slice CT Scanners",
+        "Digital X-Ray & PACS",
+        "Ultrasound with Doppler Imaging",
+        "Image-Guided Intervention Suites",
       ]}
     />
   );

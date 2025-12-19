@@ -4,32 +4,33 @@ export default function VascularSurgery() {
   return (
     <DepartmentLayout
       title="Vascular Surgery"
-      intro="Vascular Surgery specializes in the treatment of diseases of arteries, veins, and lymphatic system using minimally invasive and open surgical techniques."
+      specialization="Vascular Surgery"
+      intro="The Vascular Surgery department specializes in the diagnosis and treatment of disorders affecting arteries, veins, and lymphatic circulation using advanced surgical and minimally invasive techniques."
 
       conditions={[
+        "Peripheral Artery Disease (PAD)",
         "Varicose Veins",
-        "Peripheral Artery Disease",
-        "Aneurysms",
-        "Diabetic Foot",
+        "Aortic Aneurysms",
+        "Carotid Artery Disease",
+        "Deep Vein Thrombosis (DVT)",
+        "Diabetic Vascular Complications",
       ]}
 
       services={[
         "Endovascular Procedures",
         "Varicose Vein Treatment",
+        "Aneurysm Repair",
+        "Carotid Endarterectomy",
         "Vascular Bypass Surgery",
+        "Dialysis Access Surgery",
       ]}
 
       technologies={[
-        "Endovascular Suites",
-        "Doppler Imaging",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Muffazal Lakdawala",
-          designation: "Vascular Surgeon",
-          experience: "22+ years experience",
-        },
+        "Endovascular Imaging Systems",
+        "Laser & Radiofrequency Ablation",
+        "Hybrid Operating Theatres",
+        "Advanced Vascular Ultrasound",
+        "Minimally Invasive Surgical Tools",
       ]}
     />
   );

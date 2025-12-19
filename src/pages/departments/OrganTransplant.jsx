@@ -4,34 +4,33 @@ export default function OrganTransplant() {
   return (
     <DepartmentLayout
       title="Organ Transplant"
-      intro="The Organ Transplant program provides life-saving transplant services with ethical practices, advanced surgical expertise, and multidisciplinary care."
+      specialization="Organ Transplant"
+      intro="The Organ Transplant department provides comprehensive transplant services with a multidisciplinary team, advanced infrastructure, and world-class post-transplant care to ensure optimal patient outcomes."
 
       conditions={[
-        "End Stage Liver Disease",
-        "End Stage Kidney Disease",
-        "Heart Failure",
-        "Organ Failure Conditions",
+        "End-Stage Liver Disease",
+        "Chronic Kidney Failure",
+        "Heart Failure Requiring Transplant",
+        "Lung Failure",
+        "Pancreatic Disorders",
+        "Multi-Organ Failure",
       ]}
 
       services={[
         "Kidney Transplant",
         "Liver Transplant",
-        "Post Transplant Care",
-        "Transplant Counseling",
+        "Heart Transplant",
+        "Lung Transplant",
+        "Pancreas Transplant",
+        "Post-Transplant Follow-up & Care",
       ]}
 
       technologies={[
-        "Dedicated Transplant ICUs",
-        "Advanced Immunology Labs",
-        "Organ Preservation Systems",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Arvinder Singh Soin",
-          designation: "Transplant Surgeon",
-          experience: "30+ years experience",
-        },
+        "Advanced Transplant ICUs",
+        "Immunosuppression Monitoring Systems",
+        "High-Precision Surgical Suites",
+        "Organ Preservation Technology",
+        "Infection Control & Isolation Units",
       ]}
     />
   );

@@ -4,32 +4,33 @@ export default function PlasticAndReconstructiveSurgery() {
   return (
     <DepartmentLayout
       title="Plastic & Reconstructive Surgery"
-      intro="This department provides reconstructive and cosmetic surgery services to restore function, appearance, and confidence."
+      specialization="Plastic & Reconstructive Surgery"
+      intro="The Plastic & Reconstructive Surgery department offers advanced cosmetic and reconstructive procedures to restore form, function, and confidence using modern surgical techniques and personalized care."
 
       conditions={[
-        "Burn Injuries",
         "Congenital Deformities",
-        "Post-Trauma Reconstruction",
-        "Cosmetic Concerns",
+        "Burn Injuries & Scars",
+        "Facial Trauma",
+        "Post-Cancer Reconstruction",
+        "Hand & Microsurgery Conditions",
+        "Skin & Soft Tissue Defects",
       ]}
 
       services={[
         "Reconstructive Surgery",
-        "Cosmetic Surgery",
-        "Microsurgery",
+        "Cosmetic & Aesthetic Procedures",
+        "Burn Reconstruction",
+        "Hand & Microsurgery",
+        "Scar Revision & Skin Grafting",
+        "Post-Oncology Reconstruction",
       ]}
 
       technologies={[
-        "Advanced Microsurgical Tools",
-        "Laser Cosmetic Equipment",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Mukund Jagannathan",
-          designation: "Plastic Surgeon",
-          experience: "20+ years experience",
-        },
+        "Microsurgical Operating Systems",
+        "Laser & Aesthetic Technology",
+        "Advanced Burn Care Units",
+        "3D Surgical Planning",
+        "Minimally Invasive Cosmetic Tools",
       ]}
     />
   );

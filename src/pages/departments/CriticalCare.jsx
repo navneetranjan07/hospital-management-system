@@ -4,32 +4,31 @@ export default function CriticalCare() {
   return (
     <DepartmentLayout
       title="Critical Care"
-      intro="The Critical Care department provides round-the-clock intensive care for critically ill patients using advanced monitoring and life-support systems."
+      specialization="Critical Care"
+      intro="The Critical Care department provides 24/7 life-saving treatment for critically ill patients with advanced intensive care facilities and highly trained specialists."
 
       conditions={[
         "Sepsis",
-        "Respiratory Failure",
         "Multi-Organ Failure",
-        "Post-Surgical Critical Care",
+        "Acute Respiratory Distress Syndrome (ARDS)",
+        "Severe Infections",
+        "Post-operative Critical Care",
       ]}
 
       services={[
-        "24x7 Intensive Care Units",
+        "24/7 Intensive Care Unit (ICU)",
         "Ventilator Support",
-        "Advanced Life Support",
+        "Advanced Cardiac & Hemodynamic Monitoring",
+        "Emergency Resuscitation",
+        "Post-Surgical Intensive Care",
       ]}
 
       technologies={[
-        "High-End ICU Monitoring",
-        "Advanced Ventilation Systems",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Pradeep Rangappa",
-          designation: "Critical Care Specialist",
-          experience: "20+ years experience",
-        },
+        "Advanced Multi-Parameter Monitors",
+        "Mechanical Ventilators",
+        "Bedside Ultrasound",
+        "ECMO Support",
+        "Automated Infusion Pumps",
       ]}
     />
   );

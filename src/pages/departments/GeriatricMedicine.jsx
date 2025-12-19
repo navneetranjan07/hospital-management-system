@@ -4,32 +4,33 @@ export default function GeriatricMedicine() {
   return (
     <DepartmentLayout
       title="Geriatric Medicine"
-      intro="Geriatric Medicine provides specialized care for elderly patients focusing on chronic disease management and quality of life."
+      specialization="Geriatric Medicine"
+      intro="The Geriatric Medicine department focuses on comprehensive healthcare for elderly patients, addressing age-related medical conditions with a holistic, compassionate, and multidisciplinary approach to improve quality of life and functional independence."
 
       conditions={[
-        "Arthritis",
-        "Dementia",
+        "Age-Related Chronic Diseases",
+        "Dementia & Alzheimer's Disease",
         "Osteoporosis",
-        "Diabetes in Elderly",
+        "Arthritis & Joint Disorders",
+        "Falls & Balance Disorders",
+        "Multiple Co-morbidities",
       ]}
 
       services={[
         "Comprehensive Geriatric Assessment",
+        "Chronic Disease Management",
+        "Memory & Cognitive Care",
         "Fall Prevention Programs",
-        "Memory Clinics",
+        "Medication Review & Optimization",
+        "Palliative & Supportive Care",
       ]}
 
       technologies={[
-        "Multidisciplinary Care Teams",
-        "Remote Monitoring",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. S. K. Gupta",
-          designation: "Senior Geriatric Physician",
-          experience: "22+ years experience",
-        },
+        "Advanced Geriatric Monitoring Systems",
+        "Bone Density (DEXA) Scanning",
+        "Cognitive Assessment Tools",
+        "Rehabilitation & Mobility Aids",
+        "Integrated Elderly Care Clinics",
       ]}
     />
   );

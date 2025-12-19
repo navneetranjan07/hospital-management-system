@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { Pencil, Trash2, Plus, X, Users, UserPlus, User, Phone, Search, Edit3, Stethoscope } from "lucide-react";
+import {
+  Pencil,
+  Trash2,
+  X,
+  Users,
+  UserPlus,
+  Search,
+  Edit3,
+} from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
 export default function Doctors() {
   const [doctors, setDoctors] = useState([]);
   const [form, setForm] = useState({
-    id: "",
     name: "",
     specialization: "",
     phone: "",
@@ -31,8 +38,7 @@ export default function Doctors() {
       const res = await axios.get(`${baseUrl}/fetchall`);
       setDoctors(res.data);
     } catch (err) {
-      toast.error("Failed to fetch doctors. Please try again.");
-      console.error("Error fetching doctors:", err);
+      toast.error("Failed to fetch doctors");
     } finally {
       setLoading(false);
     }
@@ -41,222 +47,223 @@ export default function Doctors() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+
     try {
       if (editingId) {
         await axios.put(`${baseUrl}/update/${editingId}`, form);
         toast.success("Doctor updated successfully!");
-        setEditingId(null);
       } else {
         await axios.post(`${baseUrl}/save`, form);
         toast.success("Doctor added successfully!");
       }
-      setForm({name: "", specialization: "", phone: "" });
+
+      setForm({ name: "", specialization: "", phone: "" });
+      setEditingId(null);
       setShowForm(false);
       fetchDoctors();
     } catch (err) {
-      toast.error("Failed to save doctor. Please try again.");
-      console.error("Error submitting form:", err);
+      toast.error("Failed to save doctor");
     } finally {
       setSubmitting(false);
     }
   };
 
   const handleEdit = (d) => {
-    setForm(d);
+    setForm({
+      name: d.name,
+      specialization: d.specialization,
+      phone: d.phone,
+    });
     setEditingId(d.id);
     setShowForm(true);
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this doctor?")) {
-      setSubmitting(true);
-      try {
-        await axios.delete(`${baseUrl}/delete/${id}`);
-        toast.success("Doctor deleted successfully!");
-        fetchDoctors();
-      } catch (err) {
-        toast.error("Failed to delete doctor. Please try again.");
-        console.error("Error deleting doctor:", err);
-      } finally {
-        setSubmitting(false);
-      }
+    if (!window.confirm("Delete this doctor?")) return;
+
+    try {
+      await axios.delete(`${baseUrl}/delete/${id}`);
+      toast.success("Doctor deleted");
+      fetchDoctors();
+    } catch {
+      toast.error("Delete failed");
     }
   };
 
   const filteredDoctors = doctors.filter((d) =>
-    Object.values(d)
-      .join(" ")
+    `${d.name} ${d.specialization} ${d.phone}`
       .toLowerCase()
       .includes(search.toLowerCase())
   );
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
-  };
-
-  const containerVariants = {
-    initial: { opacity: 0 },
-    whileInView: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    },
-    viewport: { once: true }
-  };
-
-  const childVariants = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
   return (
-    <div className="bg-blue-200 text-gray-800 min-h-screen py-3 px-3">
-      <div className="flex justify-around">
+    <div className="bg-blue-200 min-h-screen py-6 px-4">
+      {/* Search + Add */}
+      <div className="flex justify-between items-center max-w-6xl mx-auto mb-6">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
           <input
             type="text"
-            placeholder="Search by name, ID, gender, or phone..."
-            className="md:w-96 pl-10 pr-4 py-3 sm:py-2 px-6 sm:px-10 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm transition bg-white"
+            placeholder="Search by name, specialization or phone..."
+            className="pl-10 pr-4 py-2 rounded-xl border w-80"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
+
         <button
           onClick={() => {
             setShowForm(!showForm);
-            if (!showForm) {
-              setForm({ id: "", name: "", specialization: "", phone: "" });
-              setEditingId(null);
-            }
+            setEditingId(null);
+            setForm({ name: "", specialization: "", phone: "" });
           }}
-          className={`bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-2 px-6 sm:px-10 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base flex items-center gap-2 ${showForm ? 'bg-gray-500 hover:bg-gray-600' : ''}`}
+          className="bg-teal-600 text-white px-6 py-2 rounded-xl flex gap-2"
         >
-          {showForm ? <X size={20} /> : <UserPlus size={20} />}
-          {showForm ? "Close Form" : "Add New Doctor"}
+          {showForm ? <X /> : <UserPlus />}
+          {showForm ? "Close" : "Add Doctor"}
         </button>
       </div>
 
-
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        {/* Form */}
-        {showForm && (
-          <motion.form
-            onSubmit={handleSubmit}
-            className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-6 rounded-2xl shadow-lg mb-8 border border-gray-100"
-            {...fadeInUp}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {["name", "specialization", "phone"].map((field) => (
-              <div key={field} className="relative">
-                <input
-                  className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                  value={form[field]}
-                  type={field === "id" ? "number" : "text"}
-                  onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                  required
-                />
-              </div>
-            ))}
-            <motion.button
-              type="submit"
-              className="col-span-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
-              disabled={submitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {submitting ? <ClipLoader size={20} color="white" /> : editingId ? <Edit3 size={20} /> : <UserPlus size={20} />}
-              {editingId ? "Update Doctor" : "Add Doctor"}
-            </motion.button>
-          </motion.form>
-        )}
-        <hr />
-        {/* Doctors List */}
-        <motion.h2
-          className="text-3xl font-bold text-center text-blue-800 mt-8 mb-6"
-          {...fadeInUp}
+      {/* FORM */}
+      {showForm && (
+        <motion.form
+          onSubmit={handleSubmit}
+          className="max-w-6xl mx-auto bg-white p-6 rounded-2xl shadow mb-8 grid grid-cols-3 gap-4"
         >
-          Doctors List
-        </motion.h2>
-        {loading ? (
-          <motion.div
-            className="flex justify-center items-center py-12"
-            {...fadeInUp}
+          <input
+            className="border p-3 rounded-lg"
+            placeholder="Doctor Name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
+
+          {/* 🔥 SPECIALIZATION DROPDOWN (IMPORTANT FIX) */}
+          <select
+            className="border p-3 rounded-lg"
+            value={form.specialization}
+            onChange={(e) =>
+              setForm({ ...form, specialization: e.target.value })
+            }
+            required
           >
-            <ClipLoader size={50} color="#3B82F6" />
-          </motion.div>
-        ) : (
-          <motion.table
-            className="w-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 mt-8"
-            {...containerVariants}
+            <option value="">Select Specialization</option>
+
+            <option value="Cardiac Sciences">Cardiac Sciences</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Critical Care">Critical Care</option>
+            <option value="Internal Medicine">Internal Medicine</option>
+            <option value="Emergency Medicine">Emergency Medicine</option>
+            <option value="Emergency & Trauma">Emergency & Trauma</option>
+
+            <option value="Neurology">Neurology</option>
+            <option value="Neurosurgery">Neurosurgery</option>
+            <option value="Neurointerventional Radiology">Neurointerventional Radiology</option>
+
+            <option value="Orthopaedics">Orthopaedics</option>
+            <option value="General Surgery">General Surgery</option>
+            <option value="Thoracic Surgery">Thoracic Surgery</option>
+            <option value="Vascular Surgery">Vascular Surgery</option>
+            <option value="Plastic & Reconstructive Surgery">Plastic & Reconstructive Surgery</option>
+            <option value="Endocrine Surgery">Endocrine Surgery</option>
+
+            <option value="Gynecology">Gynecology</option>
+            <option value="Obstetrics & Gynaecology">Obstetrics & Gynaecology</option>
+            <option value="Foetal Medicine">Foetal Medicine</option>
+            <option value="Paediatrics">Paediatrics</option>
+            <option value="Infertility Medicine">Infertility Medicine</option>
+
+            <option value="Oncology">Oncology</option>
+            <option value="Organ Transplant">Organ Transplant</option>
+            <option value="Liver Transplant">Liver Transplant</option>
+            <option value="Medical Genetics">Medical Genetics</option>
+            <option value="Pain & Palliative Medicine">Pain & Palliative Medicine</option>
+            <option value="Palliative Medicine">Palliative Medicine</option>
+
+            <option value="Nephrology">Nephrology</option>
+            <option value="Pulmonology">Pulmonology</option>
+            <option value="Rheumatology">Rheumatology</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Transfusion Medicine">Transfusion Medicine</option>
+            <option value="Haematology">Haematology</option>
+            <option value="Infectious Diseases">Infectious Diseases</option>
+
+            <option value="Dental Science">Dental Science</option>
+            <option value="ENT">ENT</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Physiotherapy & Rehabilitation">Physiotherapy & Rehabilitation</option>
+            <option value="Mental Health & Behavioural Sciences">
+              Mental Health & Behavioural Sciences
+            </option>
+
+            <option value="Support Specialities">Support Specialities</option>
+          </select>
+
+          <input
+            className="border p-3 rounded-lg"
+            placeholder="Phone"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            required
+          />
+
+          <button
+            type="submit"
+            className="col-span-3 bg-blue-600 text-white py-3 rounded-xl"
+            disabled={submitting}
           >
-            <thead className="bg-blue-100">
-              <tr>
-                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">ID</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Name</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Specialization</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Phone</th>
-                <th className="px-6 py-4 text-center text-sm font-bold text-blue-800">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredDoctors.length > 0 ? (
-                filteredDoctors.map((d) => (
-                  <motion.tr
-                    key={d.id}
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                    {...childVariants}
-                  >
-                    <td className="px-6 py-4 text-gray-900 font-bold">{d.id}.</td>
-                    <td className="px-6 py-4 text-gray-900 font-medium">{d.name}</td>
-                    <td className="px-6 py-4 text-gray-600">{d.specialization}</td>
-                    <td className="px-6 py-4 text-gray-600">{d.phone}</td>
-                    <td className="px-6 py-4 text-center">
-                      <div className="flex gap-2 justify-center">
-                        <motion.button
-                          onClick={() => handleEdit(d)}
-                          className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-1 px-3 rounded-lg hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md text-sm"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Pencil size={14} />
-                        </motion.button>
-                        <motion.button
-                          onClick={() => handleDelete(d.id)}
-                          disabled={submitting}
-                          className="bg-gradient-to-r from-red-500 to-red-600 text-white py-1 px-3 rounded-lg hover:from-red-600 hover:to-red-700 font-semibold transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Trash2 size={14} />
-                        </motion.button>
-                      </div>
-                    </td>
-                  </motion.tr>
-                ))
-              ) : (
-                <motion.tr {...childVariants}>
-                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500">
-                    <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                    <p>No doctors found matching your search.</p>
+            {submitting ? (
+              <ClipLoader size={20} color="white" />
+            ) : editingId ? (
+              "Update Doctor"
+            ) : (
+              "Add Doctor"
+            )}
+          </button>
+        </motion.form>
+      )}
+
+      {/* TABLE */}
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-blue-100">
+            <tr>
+              <th className="p-4 text-left">ID</th>
+              <th className="p-4 text-left">Name</th>
+              <th className="p-4 text-left">Specialization</th>
+              <th className="p-4 text-left">Phone</th>
+              <th className="p-4 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredDoctors.length ? (
+              filteredDoctors.map((d) => (
+                <tr key={d.id} className="border-t">
+                  <td className="p-4">{d.id}</td>
+                  <td className="p-4">{d.name}</td>
+                  <td className="p-4">{d.specialization}</td>
+                  <td className="p-4">{d.phone}</td>
+                  <td className="p-4 text-center flex gap-2 justify-center">
+                    <button onClick={() => handleEdit(d)}>
+                      <Pencil size={16} />
+                    </button>
+                    <button onClick={() => handleDelete(d.id)}>
+                      <Trash2 size={16} />
+                    </button>
                   </td>
-                </motion.tr>
-              )}
-            </tbody>
-          </motion.table>
-        )}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="p-8 text-center text-gray-500">
+                  <Users className="mx-auto mb-2" />
+                  No doctors found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

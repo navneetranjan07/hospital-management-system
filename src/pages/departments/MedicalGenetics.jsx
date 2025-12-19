@@ -4,34 +4,34 @@ export default function MedicalGenetics() {
   return (
     <DepartmentLayout
       title="Medical Genetics"
-      intro="Medical Genetics provides evaluation, diagnosis, and counseling for inherited and genetic disorders across all age groups."
+      specialization="Medical Genetics"
+      intro="The Medical Genetics department focuses on the diagnosis, management, and counseling of inherited and genetic disorders, using advanced genomic technologies to provide personalized and preventive healthcare."
 
       conditions={[
         "Inherited Genetic Disorders",
-        "Congenital Anomalies",
+        "Chromosomal Abnormalities",
+        "Congenital Birth Defects",
         "Metabolic Disorders",
-        "Prenatal Genetic Conditions",
+        "Rare Genetic Diseases",
+        "Familial Cancer Syndromes",
+        "Neuromuscular Genetic Conditions",
       ]}
 
       services={[
         "Genetic Counseling",
-        "Prenatal Screening",
+        "Prenatal & Preconception Genetic Testing",
         "Carrier Screening",
-        "Molecular Diagnostic Testing",
+        "Newborn Screening",
+        "Cancer Genetics Evaluation",
+        "Molecular & Cytogenetic Testing",
       ]}
 
       technologies={[
-        "Next Generation Sequencing (NGS)",
-        "Cytogenetic Analysis",
-        "Advanced Genetic Labs",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Nandita Palshetkar",
-          designation: "Clinical Geneticist",
-          experience: "15+ years experience",
-        },
+        "Next-Generation Sequencing (NGS)",
+        "Whole Exome & Genome Sequencing",
+        "Microarray & Karyotyping",
+        "Molecular Diagnostic Labs",
+        "Advanced Bioinformatics Platforms",
       ]}
     />
   );

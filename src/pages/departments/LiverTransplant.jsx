@@ -4,33 +4,34 @@ export default function LiverTransplant() {
   return (
     <DepartmentLayout
       title="Liver Transplant & Hepatobiliary Sciences"
-      intro="One of the most advanced liver transplant programs offering adult and pediatric liver transplants with excellent outcomes."
+      specialization="Liver Transplant & Hepatobiliary Sciences"
+      intro="The Liver Transplant & Hepatobiliary Sciences department provides comprehensive care for complex liver, gallbladder, pancreas, and bile duct diseases, including advanced liver transplantation procedures."
 
       conditions={[
-        "Liver Cirrhosis",
-        "Hepatitis",
-        "Liver Cancer",
+        "End-Stage Liver Disease (ESLD)",
+        "Cirrhosis of Liver",
+        "Acute Liver Failure",
+        "Hepatitis B & C",
         "Fatty Liver Disease",
+        "Liver Cancer (Hepatocellular Carcinoma)",
+        "Biliary Tract Disorders",
       ]}
 
       services={[
         "Living Donor Liver Transplant",
         "Deceased Donor Liver Transplant",
         "Hepatobiliary Surgery",
+        "Liver Cancer Management",
+        "Post-Transplant Care & Follow-up",
+        "Alcoholic Liver Disease Management",
       ]}
 
       technologies={[
-        "Dedicated Liver ICU",
-        "Advanced Imaging",
-        "3D Surgical Planning",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Arvinder Singh Soin",
-          designation: "Chairman – Liver Transplant",
-          experience: "30+ years experience",
-        },
+        "Advanced Liver ICU",
+        "High-End Imaging (CT / MRI / FibroScan)",
+        "Robotic & Minimally Invasive Surgery",
+        "Intraoperative Ultrasound",
+        "Dedicated Transplant Operation Theatres",
       ]}
     />
   );

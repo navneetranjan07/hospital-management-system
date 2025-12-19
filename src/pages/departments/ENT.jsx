@@ -1,38 +1,34 @@
 import DepartmentLayout from "./DepartmentLayout";
 
-export default function ENT() {
+export default function EndocrineSurgery() {
   return (
     <DepartmentLayout
-      title="ENT (Ear, Nose & Throat)"
-      intro="ENT department offers complete care for disorders of ear, nose, throat, head and neck."
+      title="Endocrine Surgery"
+      specialization="Endocrine Surgery"
+      intro="The Endocrine Surgery department specializes in the surgical treatment of hormonal gland disorders, using minimally invasive and advanced surgical techniques for optimal outcomes."
 
       conditions={[
-        "Hearing Loss",
-        "Sinusitis",
-        "Voice Disorders",
-        "Tonsillitis",
-        "Vertigo",
+        "Thyroid Nodules & Thyroid Cancer",
+        "Parathyroid Disorders",
+        "Adrenal Tumors",
+        "Endocrine Hypertension",
+        "Neuroendocrine Tumors",
+        "Multiple Endocrine Neoplasia (MEN)",
       ]}
 
       services={[
-        "Endoscopic Sinus Surgery",
-        "Hearing Evaluation & Implants",
-        "Voice Therapy",
-        "Head & Neck Surgery",
+        "Minimally Invasive Thyroid Surgery",
+        "Parathyroidectomy",
+        "Adrenalectomy (Laparoscopic & Robotic)",
+        "Endocrine Tumor Surgery",
+        "Hormonal Disorder Evaluation",
       ]}
 
       technologies={[
-        "Endoscopic ENT Systems",
-        "Audiology Labs",
-        "Coblation Technology",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Shashidhar TB",
-          designation: "Senior ENT Surgeon",
-          experience: "20+ years experience",
-        },
+        "Intraoperative Nerve Monitoring",
+        "Minimally Invasive & Robotic Surgery",
+        "High-Resolution Imaging",
+        "Advanced Hormonal Assay Labs",
       ]}
     />
   );

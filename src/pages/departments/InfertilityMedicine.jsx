@@ -4,35 +4,31 @@ export default function InfertilityMedicine() {
   return (
     <DepartmentLayout
       title="Infertility Medicine"
-      intro="Our Infertility Medicine department offers advanced reproductive care with ethical, personalized treatment plans for couples."
+      specialization="Infertility Medicine"
+      intro="The Infertility Medicine department provides comprehensive evaluation and advanced treatments for couples facing fertility challenges, combining medical expertise with compassionate care."
 
       conditions={[
         "Male Infertility",
         "Female Infertility",
-        "PCOS",
+        "Polycystic Ovary Syndrome (PCOS)",
         "Endometriosis",
+        "Ovulation Disorders",
         "Unexplained Infertility",
       ]}
 
       services={[
-        "IVF & ICSI",
-        "IUI",
+        "Fertility Assessment & Counseling",
+        "IVF & ICSI Treatments",
+        "IUI (Intrauterine Insemination)",
+        "Ovulation Induction Therapy",
         "Fertility Preservation",
-        "Recurrent Pregnancy Loss Treatment",
       ]}
 
       technologies={[
         "Advanced IVF Labs",
-        "Laser Assisted Hatching",
-        "Time-lapse Embryo Monitoring",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Neelam Bhardwaj",
-          designation: "Senior IVF Specialist",
-          experience: "20+ years experience",
-        },
+        "Embryo Freezing & Cryopreservation",
+        "Ultrasound-Guided Procedures",
+        "Hormonal & Genetic Testing",
       ]}
     />
   );

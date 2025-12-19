@@ -4,32 +4,33 @@ export default function ThoracicSurgery() {
   return (
     <DepartmentLayout
       title="Thoracic Surgery"
-      intro="Thoracic Surgery specializes in surgical treatment of diseases of the chest including lungs, esophagus, and mediastinum."
+      specialization="Thoracic Surgery"
+      intro="The Thoracic Surgery department specializes in surgical treatment of diseases affecting the lungs, chest wall, mediastinum, and diaphragm, using minimally invasive and advanced surgical techniques for faster recovery and better outcomes."
 
       conditions={[
         "Lung Cancer",
-        "Chest Trauma",
+        "Chest Wall Tumors",
         "Pleural Diseases",
+        "Mediastinal Tumors",
         "Esophageal Disorders",
+        "Thoracic Trauma",
       ]}
 
       services={[
-        "Minimally Invasive Thoracic Surgery",
-        "Video-Assisted Thoracoscopic Surgery (VATS)",
-        "Thoracic Oncology Surgery",
+        "Minimally Invasive Thoracic Surgery (VATS)",
+        "Lung Cancer Surgery",
+        "Chest Wall Reconstruction",
+        "Esophageal Surgery",
+        "Pleural Disease Management",
+        "Thoracic Trauma Surgery",
       ]}
 
       technologies={[
-        "VATS Technology",
-        "Advanced Surgical ICUs",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Arvinder Singh",
-          designation: "Thoracic Surgeon",
-          experience: "22+ years experience",
-        },
+        "Video-Assisted Thoracoscopic Surgery (VATS)",
+        "Advanced Surgical Stapling Systems",
+        "High-Resolution Imaging Support",
+        "Modern Thoracic ICUs",
+        "Enhanced Recovery After Surgery (ERAS) Protocols",
       ]}
     />
   );

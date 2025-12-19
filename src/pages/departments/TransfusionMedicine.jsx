@@ -4,34 +4,33 @@ export default function TransfusionMedicine() {
   return (
     <DepartmentLayout
       title="Transfusion Medicine"
-      intro="The Transfusion Medicine department ensures safe, timely, and effective blood and blood component services."
+      specialization="Transfusion Medicine"
+      intro="The Transfusion Medicine department ensures safe, timely, and effective blood and blood component services, supporting critical care, surgeries, oncology, and emergency medicine with stringent quality and safety standards."
 
       conditions={[
-        "Severe Anemia",
-        "Blood Loss Emergencies",
+        "Anemia & Blood Disorders",
+        "Massive Blood Loss",
         "Bleeding Disorders",
-        "Cancer-related Transfusions",
+        "Thalassemia & Hemoglobinopathies",
+        "Oncology-Related Transfusions",
+        "Pre- and Post-Surgical Transfusion Needs",
       ]}
 
       services={[
-        "Blood Component Therapy",
+        "Blood & Blood Component Transfusions",
         "Apheresis Services",
-        "Pre-Transfusion Testing",
-        "Blood Donation Programs",
+        "Compatibility Testing & Cross-Matching",
+        "Massive Transfusion Protocols",
+        "Therapeutic Plasma Exchange",
+        "Donor Screening & Counseling",
       ]}
 
       technologies={[
-        "Automated Blood Analyzers",
+        "Automated Blood Grouping & Screening",
+        "Apheresis Machines",
         "Component Separation Units",
-        "Blood Storage Monitoring Systems",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Meena Kapoor",
-          designation: "Transfusion Medicine Specialist",
-          experience: "18+ years experience",
-        },
+        "Cold Chain Storage & Monitoring",
+        "Quality-Controlled Blood Bank Systems",
       ]}
     />
   );

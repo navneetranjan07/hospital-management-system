@@ -1,32 +1,27 @@
 import DepartmentLayout from "./DepartmentLayout";
 
-export default function CardiacSciences() {
+export default function CardiacScience() {
   return (
     <DepartmentLayout
       title="Cardiac Sciences"
       specialization="Cardiac Sciences"
-      intro="The Cardiac Sciences department provides comprehensive heart care with advanced diagnostics, interventional cardiology, and cardiac surgery under one roof."
+      intro="Comprehensive heart care with advanced diagnostics and surgery."
 
       conditions={[
         "Coronary Artery Disease",
         "Heart Failure",
         "Arrhythmias",
-        "Valvular Heart Disease",
-        "Congenital Heart Defects",
-        "Hypertension",
+        "Valvular Disorders",
       ]}
 
       services={[
         "Angiography & Angioplasty",
         "Bypass Surgery (CABG)",
-        "Pacemaker & ICD Implantation",
-        "Heart Failure Clinics",
-        "Preventive Cardiology",
+        "Pacemaker Implantation",
       ]}
 
       technologies={[
         "Cath Labs with 3D Imaging",
-        "Intravascular Ultrasound (IVUS)",
         "Robotic Cardiac Surgery",
         "Advanced Cardiac ICU",
       ]}

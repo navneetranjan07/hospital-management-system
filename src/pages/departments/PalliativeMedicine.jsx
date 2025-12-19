@@ -1,36 +1,36 @@
 import DepartmentLayout from "./DepartmentLayout";
 
-export default function PalliativeMedicine() {
+export default function PainAndPalliativeMedicine() {
   return (
     <DepartmentLayout
-      title="Palliative Medicine"
-      intro="The Palliative Medicine department focuses on improving quality of life for patients with serious or life-limiting illnesses through comprehensive symptom management and emotional support."
+      title="Pain & Palliative Medicine"
+      specialization="Pain & Palliative Medicine"
+      intro="The Pain & Palliative Medicine department focuses on relieving pain, improving comfort, and enhancing quality of life for patients with chronic, serious, and life-limiting illnesses through compassionate and multidisciplinary care."
 
       conditions={[
-        "Advanced Cancer",
-        "Chronic Organ Failure",
-        "Severe Neurological Conditions",
+        "Chronic Cancer Pain",
+        "Neuropathic Pain",
+        "Musculoskeletal Pain",
         "End-of-Life Care Needs",
+        "Advanced Organ Failure",
+        "Post-Surgical Chronic Pain",
       ]}
 
       services={[
-        "Pain & Symptom Management",
+        "Comprehensive Pain Management",
+        "Cancer Pain Relief Programs",
+        "Palliative Care Consultation",
+        "Symptom Control & Supportive Care",
         "Psychological & Emotional Support",
         "Home-Based Palliative Care",
-        "Family Counseling",
       ]}
 
       technologies={[
-        "Multidisciplinary Care Teams",
-        "Advanced Pain Management Protocols",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Anil Kumar",
-          designation: "Palliative Care Specialist",
-          experience: "20+ years experience",
-        },
+        "Ultrasound-Guided Pain Interventions",
+        "Nerve Block Procedures",
+        "Patient-Controlled Analgesia (PCA)",
+        "Advanced Pain Monitoring Tools",
+        "Multidisciplinary Care Platforms",
       ]}
     />
   );

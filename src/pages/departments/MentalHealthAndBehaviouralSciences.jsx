@@ -4,35 +4,13 @@ export default function MentalHealthAndBehaviouralSciences() {
   return (
     <DepartmentLayout
       title="Mental Health & Behavioural Sciences"
-      intro="This department provides comprehensive mental health care with compassionate, confidential, and evidence-based treatment."
-
-      conditions={[
-        "Depression",
-        "Anxiety Disorders",
-        "Bipolar Disorder",
-        "Schizophrenia",
-        "Stress & Burnout",
-        "Substance Abuse",
-      ]}
+      specialization="Mental Health & Behavioural Sciences"
+      intro="Compassionate care for mental and emotional well-being."
 
       services={[
-        "Psychiatric Evaluation",
-        "Counseling & Psychotherapy",
+        "Psychiatry",
+        "Counselling",
         "De-addiction Programs",
-        "Child & Adolescent Psychiatry",
-      ]}
-
-      technologies={[
-        "Tele-Psychiatry Services",
-        "Multidisciplinary Mental Health Teams",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Sameer Parikh",
-          designation: "Senior Psychiatrist",
-          experience: "25+ years experience",
-        },
       ]}
     />
   );

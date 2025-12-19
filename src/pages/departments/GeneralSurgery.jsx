@@ -4,33 +4,31 @@ export default function GeneralSurgery() {
   return (
     <DepartmentLayout
       title="General Surgery"
-      intro="General Surgery provides surgical care for a wide range of abdominal, gastrointestinal, and soft tissue conditions using minimally invasive techniques."
+      specialization="General Surgery"
+      intro="The General Surgery department offers comprehensive surgical care using modern minimally invasive and open surgical techniques for a wide range of conditions."
 
       conditions={[
-        "Hernia",
+        "Hernia (Inguinal, Umbilical, Incisional)",
+        "Gallbladder Diseases (Gallstones)",
         "Appendicitis",
-        "Gall Bladder Disease",
-        "Colorectal Disorders",
+        "Breast Lumps & Breast Disorders",
+        "Thyroid Disorders",
+        "Abdominal Infections & Abscesses",
       ]}
 
       services={[
-        "Laparoscopic Surgery",
-        "Hernia Repair",
-        "Colorectal Surgery",
-        "Emergency Surgical Care",
+        "Laparoscopic & Open Hernia Surgery",
+        "Laparoscopic Cholecystectomy",
+        "Appendectomy",
+        "Breast Surgery",
+        "Minor & Major General Surgical Procedures",
       ]}
 
       technologies={[
-        "Advanced Laparoscopy Systems",
-        "Robotic Assisted Surgery",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. P. Raghu Ram",
-          designation: "Senior General Surgeon",
-          experience: "28+ years experience",
-        },
+        "Advanced Laparoscopic Systems",
+        "Energy-Based Surgical Devices",
+        "Modern Operation Theatres",
+        "Enhanced Recovery After Surgery (ERAS) Protocols",
       ]}
     />
   );

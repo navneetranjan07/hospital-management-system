@@ -4,32 +4,32 @@ export default function InternalMedicine() {
   return (
     <DepartmentLayout
       title="Internal Medicine"
-      intro="Internal Medicine provides comprehensive adult healthcare focusing on prevention, diagnosis, and non-surgical treatment of diseases."
+      specialization="Internal Medicine"
+      intro="The Internal Medicine department focuses on the prevention, diagnosis, and non-surgical treatment of adult diseases, offering comprehensive and long-term care for complex medical conditions."
 
       conditions={[
-        "Diabetes",
+        "Diabetes Mellitus",
         "Hypertension",
-        "Infections",
-        "Chronic Diseases",
+        "Thyroid Disorders",
+        "Infectious Diseases",
+        "Chronic Liver Disease",
+        "Respiratory Infections",
+        "Fever of Unknown Origin",
       ]}
 
       services={[
-        "Preventive Health Checkups",
+        "Comprehensive Health Checkups",
         "Chronic Disease Management",
-        "Lifestyle Medicine",
+        "Preventive Healthcare",
+        "Lifestyle & Diet Counseling",
+        "Geriatric Medical Care",
       ]}
 
       technologies={[
-        "Advanced Diagnostic Support",
-        "Integrated Care Pathways",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Arvind Gupta",
-          designation: "Senior Physician",
-          experience: "30+ years experience",
-        },
+        "Advanced Diagnostic Labs",
+        "Digital X-Ray & Ultrasound",
+        "ECG & Holter Monitoring",
+        "Electronic Medical Records (EMR)",
       ]}
     />
   );

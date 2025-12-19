@@ -4,34 +4,25 @@ export default function Orthopaedics() {
   return (
     <DepartmentLayout
       title="Orthopaedics"
-      intro="Orthopaedics provides advanced care for bone, joint, spine, and musculoskeletal disorders using modern surgical and non-surgical techniques."
+      specialization="Orthopaedics"
+      intro="Comprehensive care for bones, joints, and musculoskeletal system."
 
       conditions={[
         "Arthritis",
-        "Joint Injuries",
-        "Spine Disorders",
         "Sports Injuries",
-        "Fractures & Trauma",
+        "Fractures",
+        "Spine Disorders",
       ]}
 
       services={[
-        "Joint Replacement Surgery",
-        "Arthroscopic Surgery",
-        "Spine Surgery",
-        "Sports Injury Management",
+        "Joint Replacement",
+        "Arthroscopy",
+        "Trauma Surgery",
       ]}
 
       technologies={[
         "Robotic Joint Replacement",
-        "Advanced Arthroscopy Systems",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Ashok Rajgopal",
-          designation: "Senior Orthopaedic Surgeon",
-          experience: "35+ years experience",
-        },
+        "Minimally Invasive Surgery",
       ]}
     />
   );

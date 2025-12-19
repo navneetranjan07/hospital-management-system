@@ -3,33 +3,34 @@ import DepartmentLayout from "./DepartmentLayout";
 export default function DiabetologyAndEndocrinology() {
   return (
     <DepartmentLayout
-      title="Diabetology / Endocrinology"
-      intro="This department manages hormonal disorders and diabetes with a holistic approach including lifestyle management and advanced therapies."
+      title="Diabetology & Endocrinology"
+      specialization="Diabetology & Endocrinology"
+      intro="The Diabetology & Endocrinology department offers comprehensive care for diabetes and hormonal disorders, combining evidence-based treatment, lifestyle management, and advanced diagnostics for long-term control and improved quality of life."
 
       conditions={[
         "Type 1 & Type 2 Diabetes",
+        "Gestational Diabetes",
         "Thyroid Disorders",
-        "Hormonal Imbalances",
-        "Metabolic Syndrome",
+        "Obesity & Metabolic Syndrome",
+        "Pituitary & Adrenal Disorders",
+        "Osteoporosis & Calcium Disorders",
       ]}
 
       services={[
-        "Diabetes Education Programs",
-        "Insulin Pump Therapy",
-        "Hormone Replacement Therapy",
+        "Comprehensive Diabetes Management",
+        "Insulin Therapy & Pump Management",
+        "Thyroid & Hormonal Clinics",
+        "Lifestyle & Nutrition Counseling",
+        "Diabetes Complication Screening",
+        "Endocrine Disorder Evaluation",
       ]}
 
       technologies={[
         "Continuous Glucose Monitoring (CGM)",
-        "Advanced Endocrine Labs",
-      ]}
-
-      doctors={[
-        {
-          name: "Dr. Ambrish Mithal",
-          designation: "Senior Endocrinologist",
-          experience: "30+ years experience",
-        },
+        "Insulin Pump Therapy",
+        "Advanced Hormonal Assay Labs",
+        "Bone Density Scanning (DEXA)",
+        "Integrated Metabolic Clinics",
       ]}
     />
   );
