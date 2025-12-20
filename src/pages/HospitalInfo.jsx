@@ -123,57 +123,6 @@ export default function HospitalInfo() {
 
       
 
-      
-      
-
-      {/* Doctors */}
-      <motion.section
-        className="py-16 px-6 md:px-16 bg-gradient-to-br from-blue-50 to-teal-50"
-        {...fadeInUp}
-      >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Meet Our Doctors</h2>
-          <motion.div
-            className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
-            {...containerVariants}
-          >
-            {[
-              { name: "Dr. Ananya Sharma", specialty: "Cardiologist", image: Ananya, color: "from-red-500 to-pink-500" },
-              { name: "Dr. Rajesh Mehta", specialty: "Neurologist", image: Rajesh, color: "from-purple-500 to-indigo-500" },
-              { name: "Dr. Priya Nair", specialty: "Oncologist", image: Priya, color: "from-orange-500 to-yellow-500" },
-              { name: "Dr. Arjun Singh", specialty: "Orthopedic Surgeon", image: Arjun, color: "from-green-500 to-teal-500" },
-              { name: "Dr. Sneha Verma", specialty: "Pediatrician", image: Sneha, color: "from-blue-500 to-cyan-500" },
-              { name: "Dr. Ravi Patel", specialty: "Dermatologist", image: Ravi, color: "from-indigo-500 to-purple-500" },
-            ].map((doc, i) => (
-              <motion.div
-                key={i}
-                className="group bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 hover:border-blue-100/50 relative overflow-hidden"
-                {...childVariants}
-              >
-                <div className="relative mb-6">
-                  <img
-                    src={doc.image}
-                    alt={doc.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl border-4 border-white group-hover:border-blue-200 transition-colors duration-300"
-                  />
-                  <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-blue-800 mb-3">{doc.name}</h3>
-                <div className="inline-block bg-gradient-to-r from-blue-100 to-teal-100 px-4 py-2 rounded-full shadow-md">
-                  <span className="text-blue-700 font-semibold">{doc.specialty}</span>
-                </div>
-                <p className="text-gray-600 mt-2 text-sm leading-relaxed">
-                  Expert in {doc.specialty.toLowerCase()} with years of experience providing compassionate care.
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
 
       {/* Contact Section */}
       <section className="py-16 px-6 md:px-16 bg-white">

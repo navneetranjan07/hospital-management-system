@@ -19,6 +19,8 @@ export default function Doctors() {
     name: "",
     specialization: "",
     phone: "",
+    fees: "",
+    experience: "",
   });
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -57,7 +59,7 @@ export default function Doctors() {
         toast.success("Doctor added successfully!");
       }
 
-      setForm({ name: "", specialization: "", phone: "" });
+      setForm({ name: "", specialization: "", phone: "", fees: "", experience: "" });
       setEditingId(null);
       setShowForm(false);
       fetchDoctors();
@@ -73,6 +75,8 @@ export default function Doctors() {
       name: d.name,
       specialization: d.specialization,
       phone: d.phone,
+      fees: d.fees,
+      experience: d.experience,
     });
     setEditingId(d.id);
     setShowForm(true);
@@ -91,7 +95,7 @@ export default function Doctors() {
   };
 
   const filteredDoctors = doctors.filter((d) =>
-    `${d.name} ${d.specialization} ${d.phone}`
+    `${d.name} ${d.specialization} ${d.phone} ${d.fees} ${d.experience}`
       .toLowerCase()
       .includes(search.toLowerCase())
   );
@@ -115,7 +119,7 @@ export default function Doctors() {
           onClick={() => {
             setShowForm(!showForm);
             setEditingId(null);
-            setForm({ name: "", specialization: "", phone: "" });
+            setForm({ name: "", specialization: "", phone: "", fees: "", experience: "" });
           }}
           className="bg-teal-600 text-white px-6 py-2 rounded-xl flex gap-2"
         >
@@ -204,9 +208,49 @@ export default function Doctors() {
             className="border p-3 rounded-lg"
             placeholder="Phone"
             value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            maxLength={10}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 10 && value.length >= 0) {
+                setForm({ ...form, phone: e.target.value });
+                
+              }
+            }
+            }
             required
           />
+
+          <input
+            className="border p-3 rounded-lg"
+            placeholder="Experience (in years)"
+            type="number"
+            value={form.experience}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 2) {
+                setForm({ ...form, experience: value });
+              }
+            }
+            }
+            required
+          />
+
+          <input
+            className="border p-3 rounded-lg"
+            placeholder="Fees"
+            type="number"
+            value={form.fees}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 6) {
+                setForm({ ...form, fees: value });
+              }
+            }
+            }
+            required
+          />
+
+
 
           <button
             type="submit"
@@ -232,6 +276,8 @@ export default function Doctors() {
               <th className="p-4 text-left">ID</th>
               <th className="p-4 text-left">Name</th>
               <th className="p-4 text-left">Specialization</th>
+              <th className="p-4 text-left">Experience</th>
+              <th className="p-4 text-left">Fees</th>
               <th className="p-4 text-left">Phone</th>
               <th className="p-4 text-center">Actions</th>
             </tr>
@@ -243,6 +289,8 @@ export default function Doctors() {
                   <td className="p-4">{d.id}</td>
                   <td className="p-4">{d.name}</td>
                   <td className="p-4">{d.specialization}</td>
+                  <td className="p-4">{d.experience} yrs</td>
+                  <td className="p-4">₹ {d.fees}</td>
                   <td className="p-4">{d.phone}</td>
                   <td className="p-4 text-center flex gap-2 justify-center">
                     <button onClick={() => handleEdit(d)}>

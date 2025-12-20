@@ -4,7 +4,7 @@ export default function EndocrineSurgery() {
   return (
     <DepartmentLayout
       title="Endocrine Surgery"
-      specialization="Endocrine Surgery"
+      specialization="ENT"
       intro="The Endocrine Surgery department specializes in the surgical treatment of hormonal gland disorders, using minimally invasive and advanced surgical techniques for optimal outcomes."
 
       conditions={[
