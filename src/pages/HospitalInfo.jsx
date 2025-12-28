@@ -9,7 +9,7 @@ import Sneha from "../assets/doctors/Sneha-Verma.jpg";
 import Ravi from "../assets/doctors/Ravi-Patel.jpg";
 import { Link } from "react-router-dom";
 
-import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaFacebook, FaYoutube, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaFacebook, FaYoutube, FaUser, FaEnvelope, FaComment, FaAngleDown, FaUserInjured } from 'react-icons/fa';
 
 export default function HospitalInfo() {
   const navigate = useNavigate();
@@ -69,6 +69,21 @@ export default function HospitalInfo() {
     }
   };
 
+  const adminPannelData = [
+    {
+      label: "Patients",
+      to: "/patients",
+      icon: <FaUserInjured />,
+      isLink: true,
+    },
+    {
+      label: "Doctors",
+      to: "/doctors",
+      icon: <FaUserInjured />,
+      isLink: true,
+    },
+  ]
+
   return (
     <div className="bg-gray-50 text-gray-800 ">
       {/* Header Section */}
@@ -76,20 +91,20 @@ export default function HospitalInfo() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center py-6">
-            <div className="inline-flex items-center px-6  bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-1 gap-1">
-              <svg className="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span className="text-teal-100 font-medium">Leading Healthcare Excellence Since 2000</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight">
-              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">CityCare</span>
-              <br />
-              Multispeciality Hospital
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-blue-100 leading-relaxed">
-              Committed to delivering compassionate care with cutting-edge technology and a team of dedicated professionals.
-            </p>
+          <div className="inline-flex items-center px-6  bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-1 gap-1">
+            <svg className="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span className="text-teal-100 font-medium">Leading Healthcare Excellence Since 2000</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight">
+            <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">CityCare</span>
+            <br />
+            Multispeciality Hospital
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            Committed to delivering compassionate care with cutting-edge technology and a team of dedicated professionals.
+          </p>
           {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-sm sm:text-base">
              <Link to="/appointments">Book Appointment</Link>
@@ -121,7 +136,7 @@ export default function HospitalInfo() {
         </div>
       </header>
 
-      
+
 
 
       {/* Contact Section */}
@@ -176,7 +191,7 @@ export default function HospitalInfo() {
                 </div>
               </div>
             </div>
-            
+
           </div>
 
           {/* Contact Form */}
@@ -336,6 +351,45 @@ export default function HospitalInfo() {
           </div>
         </div>
       </footer>
+
+      <div className="adminCorner group z-[1000]">
+        <button className="bg-indigo-700 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+          Admin Corner <FaAngleDown />
+        </button>
+
+        {/* ================= SPECIALITIES MEGA MENU ================= */}
+        <div className="absolute left-1/2 -translate-x-44 -translate-y-28 hidden group-hover:block z-[999] pt-4">
+          <div className=" bg-white shadow-2xl rounded-xl z-50 p-2">
+
+            <div className="flex w-auto gap-5 z-50">
+
+              {adminPannelData.map((item, index) =>
+                item.isLink ? (
+                  <Link
+                    key={index}
+                    to={item.to}
+                    className="flex items-center gap-2 px-5 py-3 text-sm
+                            hover:bg-gray-100 hover:text-blue-600 transition"
+                  >
+                    {item.icon}
+                    {item.label}
+                  </Link>
+                ) : (
+                  <div
+                    key={index}
+                    className="px-5 py-3 text-sm cursor-pointer
+                            hover:bg-gray-100 hover:text-orange-600 transition"
+                  >
+                    {item.label}
+                  </div>
+                )
+              )}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -83,20 +83,7 @@ export default function Navbar() {
   const [activeRegion, setActiveRegion] = useState("North India");
   const [activeState, setActiveState] = useState("Delhi");
 
-  const adminPannelData = [
-    {
-      label: "Patients",
-      to: "/patients",
-      icon: <FaUserInjured />,
-      isLink: true,
-    },
-    {
-      label: "Doctors",
-      to: "/doctors",
-      icon: <FaUserInjured />,
-      isLink: true,
-    },
-  ]
+
 
   const specialtiesData = [
     "Cardiac Sciences",
@@ -178,7 +165,7 @@ export default function Navbar() {
     <>
 
       {/* first nav open */}
-      <nav className="bg-blue-100 w-full py-2 flex justify-center items-center shadow-md sticky top-0 z-50 ">
+      <nav className="bg-blue-100 w-full py-2 flex justify-center items-center shadow-md sticky top-0 ">
         <div className=" flex w-9/12 justify-between items-center pr-10">
 
           <div>{localStorage.getItem("username") && (
@@ -216,44 +203,7 @@ export default function Navbar() {
           <FaSignOutAlt /> Logout
         </button>
 
-        <div className="relative group ">
-          <button className="bg-indigo-700 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
-            Admin Corner <FaAngleDown />
-          </button>
-
-          {/* ================= SPECIALITIES MEGA MENU ================= */}
-          <div className="absolute left-1/2 -translate-x-3/4 top-full hidden group-hover:block z-[999] pt-4">
-            <div className=" bg-white shadow-2xl rounded-xl p-2">
-
-              <div className="flex w-auto gap-5 z-50">
-
-                {adminPannelData.map((item, index) =>
-                  item.isLink ? (
-                    <Link
-                      key={index}
-                      to={item.to}
-                      className="flex items-center gap-2 px-5 py-3 text-sm
-                      hover:bg-gray-100 hover:text-blue-600 transition"
-                    >
-                      {item.icon}
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <div
-                      key={index}
-                      className="px-5 py-3 text-sm cursor-pointer
-                      hover:bg-gray-100 hover:text-orange-600 transition"
-                    >
-                      {item.label}
-                    </div>
-                  )
-                )}
-
-
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
       </nav>
       {/* first nav close */}
@@ -656,6 +606,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
 
     </>
   );

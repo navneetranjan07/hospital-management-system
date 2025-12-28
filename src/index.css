@@ -104,3 +104,10 @@
 }
 
 /* end of login page css */
+
+.adminCorner{
+  position: absolute;
+  right: 2%;
+  top: 92%;
+  position: fixed;
+}
