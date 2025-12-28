@@ -111,3 +111,135 @@
   top: 93%;
   position: fixed;
 }
+
+
+/* ===== Camera Scanner UI ===== */
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.scan-frame {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  border: 3px solid #22c55e;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #22c55e;
+  animation: scanMove 2s linear infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+
+/* ===== Camera Scanner Overlay ===== */
+.camera-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Camera video */
+.camera-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scan frame */
+.scan-frame {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  border: 3px solid #22c55e;
+  border-radius: 14px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Animated scanning line */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #22c55e, transparent);
+  animation: scanMove 2s linear infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Instruction text */
+.scan-instruction {
+  position: absolute;
+  top: 16px;
+  color: white;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+/* Bottom controls */
+.camera-controls {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 14px;
+}
+
+/* Buttons */
+.camera-btn {
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.camera-btn.capture {
+  background: #22c55e;
+  color: white;
+}
+
+.camera-btn.close {
+  background: #ef4444;
+  color: white;
+}

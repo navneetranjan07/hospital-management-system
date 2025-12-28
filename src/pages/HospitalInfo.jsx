@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Ananya from "../assets/doctors/Ananya-Sharma.jpg";
-import Rajesh from "../assets/doctors/Rajesh-Mehta.jpg";
-import Priya from "../assets/doctors/Priya-Nair.jpg";
-import Arjun from "../assets/doctors/Arjun-Singh.jpg";
-import Sneha from "../assets/doctors/Sneha-Verma.jpg";
-import Ravi from "../assets/doctors/Ravi-Patel.jpg";
 import { Link } from "react-router-dom";
+import HospitalChatbot from "../components/HospitalChatbot";
 
-import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaFacebook, FaYoutube, FaUser, FaEnvelope, FaComment, FaAngleDown, FaUserInjured } from 'react-icons/fa';
+
+import { FaInstagram, FaFacebook, FaYoutube, FaUser, FaEnvelope, FaComment, FaAngleDown, FaUserInjured } from 'react-icons/fa';
 
 export default function HospitalInfo() {
   const navigate = useNavigate();
@@ -90,7 +86,7 @@ export default function HospitalInfo() {
       <header className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-6xl mx-auto text-center py-6">
+        <div className="relative  max-w-6xl mx-auto text-center py-6">
           <div className="inline-flex items-center px-6  bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-1 gap-1">
             <svg className="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -388,8 +384,9 @@ export default function HospitalInfo() {
           </div>
         </div>
       </div>
+<HospitalChatbot />
 
-      
+
     </div>
   );
 }
