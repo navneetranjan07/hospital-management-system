@@ -331,7 +331,7 @@ export default function HospitalInfo() {
             <p className="text-blue-100 text-sm text-center">&copy; {new Date().getFullYear()} CityCare Multispeciality Hospital. All rights reserved.</p>
             <div>
               <p className="text-blue-100 text-sm text-center">Developed by <a href="https://github.com/navneetranjan07"><span className="text-yellow-400 ">Navneet Ranjan</span> with 💖 in India.</a></p>
-              <p className="text-blue-100 text-sm text-center">Innovative Idea by <a href="hhttps://github.com/nishant0256"><span className="text-yellow-400 ">Nishant Kumar</span> with 💖 in India.</a></p>
+              <p className="text-blue-100 text-sm text-center">Innovative Idea by <a href="https://github.com/nishant0256"><span className="text-yellow-400 ">Nishant Kumar</span> with 💖 in India.</a></p>
             </div>
           </div>
         </div>
