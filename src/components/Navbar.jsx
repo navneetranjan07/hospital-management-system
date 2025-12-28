@@ -19,11 +19,31 @@ import { Stethoscope } from "lucide-react";
 export default function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [callbackPopupOpen, setCallbackPopupOpen] = useState(false);
+  const [callbackForm, setCallbackForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("username");
     navigate("/login");
+  };
+
+  const handleCallbackSubmit = (e) => {
+    e.preventDefault();
+    console.log("Callback Request:", callbackForm);
+    alert("Callback request submitted!");
+    setCallbackPopupOpen(false);
+    setCallbackForm({ name: "", phone: "", email: "", message: "" });
+  };
+
+  const handleCallbackClose = () => {
+    setCallbackPopupOpen(false);
+    setCallbackForm({ name: "", phone: "", email: "", message: "" });
   };
 
   const toSlug = (text) =>
@@ -480,9 +500,12 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="w-screen flex items-center gap-6 justify-center ">
 
-            <Link to="/home" className=" flex items-center px-6 py-1 gap-2 rounded-3xl transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+            <button
+              onClick={() => setCallbackPopupOpen(true)}
+              className=" flex items-center px-6 py-1 gap-2 rounded-3xl transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]"
+            >
               <FaPhoneAlt /> Request a Callback
-            </Link>
+            </button>
             {/* <Link to="/patients" className=" flex items-center p-1 gap-1 rounded-lg transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
               <FaUserInjured /> Patients
             </Link>
@@ -494,7 +517,7 @@ export default function Navbar() {
               <FaCalendarCheck /> Book Appointments
             </Link>
             <Link
-              to="/home" className="flex items-center px-6 py-1 gap-2 rounded-3xl transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
+              to="/health-checkup" className="flex items-center px-6 py-1 gap-2 rounded-3xl transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
               <FaStethoscope /> Get Health Checkup
             </Link>
 
@@ -560,6 +583,80 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Callback Request Popup */}
+      {callbackPopupOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[1000]">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold text-gray-800">Request a Callback</h2>
+              <button
+                onClick={handleCallbackClose}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                &times;
+              </button>
+            </div>
+            <form onSubmit={handleCallbackSubmit}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input
+                  type="text"
+                  value={callbackForm.name}
+                  onChange={(e) => setCallbackForm({ ...callbackForm, name: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input
+                  type="tel"
+                  value={callbackForm.phone}
+                  onChange={(e) => setCallbackForm({ ...callbackForm, phone: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input
+                  type="email"
+                  value={callbackForm.email}
+                  onChange={(e) => setCallbackForm({ ...callbackForm, email: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea
+                  value={callbackForm.message}
+                  onChange={(e) => setCallbackForm({ ...callbackForm, message: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="3"
+                />
+              </div>
+              <div className="flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={handleCallbackClose}
+                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
     </>
   );
 }

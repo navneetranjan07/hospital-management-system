@@ -9,6 +9,7 @@ import Doctors from "./pages/Doctors";
 import Appointments from "./pages/Appointments";
 import Departments from "./pages/diseaseDepartments";
 import HospitalInfo from "./pages/HospitalInfo"
+import HealthCheckup from "./pages/HealthCheckup";
 
 import FindDoctor from "./pages/firstNavbar/FindDoctor";
 import AboutUs from "./pages/firstNavbar/AboutUs";
@@ -91,6 +92,7 @@ function App() {
                 <Navbar />
                 <Routes>
                   <Route path="/home" element={<HospitalInfo />} />
+                  <Route path="/health-checkup" element={<HealthCheckup />} />
                    <Route path="/find-doctor" element={<FindDoctor />} />
                    <Route path="/about-us" element={<AboutUs />} />
                    <Route path="/careers" element={<Carrers />} />
