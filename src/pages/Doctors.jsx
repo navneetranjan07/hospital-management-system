@@ -270,35 +270,47 @@ export default function Doctors() {
 
       {/* TABLE */}
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow overflow-hidden">
+        
         <table className="w-full">
           <thead className="bg-blue-100">
             <tr>
-              <th className="p-4 text-left">ID</th>
-              <th className="p-4 text-left">Name</th>
-              <th className="p-4 text-left">Specialization</th>
-              <th className="p-4 text-left">Experience</th>
-              <th className="p-4 text-left">Fees</th>
-              <th className="p-4 text-left">Phone</th>
-              <th className="p-4 text-center">Actions</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">ID</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Name</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Specialization</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Experience</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Fees</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-blue-800">Phone</th>
+              <th className="px-6 py-4 text-center text-sm font-bold text-blue-800">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredDoctors.length ? (
               filteredDoctors.map((d) => (
                 <tr key={d.id} className="border-t">
-                  <td className="p-4">{d.id}</td>
-                  <td className="p-4">{d.name}</td>
-                  <td className="p-4">{d.specialization}</td>
-                  <td className="p-4">{d.experience} yrs</td>
-                  <td className="p-4">₹ {d.fees}</td>
-                  <td className="p-4">{d.phone}</td>
+                  <td className="px-6 py-4 text-gray-900 font-bold">{d.id}</td>
+                  <td className="px-6 py-4 text-gray-900 font-medium">{d.name}</td>
+                  <td className="px-6 py-4 text-gray-600">{d.specialization}</td>
+                  <td className="px-6 py-4 text-gray-600">{d.experience} yrs</td>
+                  <td className="px-6 py-4 text-gray-600">₹ {d.fees}</td>
+                  <td className="px-6 py-4 text-gray-600">{d.phone}</td>
                   <td className="p-4 text-center flex gap-2 justify-center">
-                    <button onClick={() => handleEdit(d)}>
-                      <Pencil size={16} />
-                    </button>
-                    <button onClick={() => handleDelete(d.id)}>
-                      <Trash2 size={16} />
-                    </button>
+                    <motion.button
+                          onClick={() => handleEdit(d)}
+                          className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white py-1 px-3 rounded-lg hover:from-yellow-500 hover:to-yellow-600 font-semibold transition-all duration-300 shadow-md text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Pencil size={14} />
+                        </motion.button>
+                        <motion.button
+                          onClick={() => handleDelete(d.id)}
+                          disabled={submitting}
+                          className="bg-gradient-to-r from-red-500 to-red-600 text-white py-1 px-3 rounded-lg hover:from-red-600 hover:to-red-700 font-semibold transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Trash2 size={14} />
+                        </motion.button>
                   </td>
                 </tr>
               ))

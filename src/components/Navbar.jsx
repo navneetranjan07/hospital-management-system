@@ -198,7 +198,7 @@ export default function Navbar() {
         
          <div className="relative group ">
             <button className="bg-indigo-700 text-white px-4 py-1 rounded-3xl flex items-center gap-2 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 hover:shadow-[0_0_12px_rgba(59,130,246,0.4)]">
-              Specialities <FaAngleDown />
+              Admin Corner <FaAngleDown />
             </button>
 
             {/* ================= SPECIALITIES MEGA MENU ================= */}
