@@ -9,7 +9,7 @@ import Sneha from "../assets/doctors/Sneha-Verma.jpg";
 import Ravi from "../assets/doctors/Ravi-Patel.jpg";
 import { Link } from "react-router-dom";
 
-import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaTwitter, FaLinkedin, FaFacebook, FaYoutube, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 
 export default function HospitalInfo() {
   const navigate = useNavigate();
@@ -246,30 +246,93 @@ export default function HospitalInfo() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-blue-900 via-blue-800 to-teal-900 text-white text-center py-12 mt-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-left md:text-left">
-              <h3 className="text-2xl font-bold mb-2">CityCare Multispeciality Hospital</h3>
-              <p className="text-blue-100">Caring for you with compassion, technology, and excellence.</p>
+      <footer className="bg-gradient-to-r from-blue-900 via-blue-800 to-teal-900 text-white py-12 mt-16">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* For Patients */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-teal-200">For Patients</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/doctors" className="text-blue-100 hover:text-white transition-colors duration-300 block">Find Doctor</Link></li>
+                <li><Link to="/patients" className="text-blue-100 hover:text-white transition-colors duration-300 block">International Services</Link></li>
+                <li><Link to="/patients" className="text-blue-100 hover:text-white transition-colors duration-300 block">Partnerships</Link></li>
+                <li><Link to="/hospital-info" className="text-blue-100 hover:text-white transition-colors duration-300 block">Our Hospital</Link></li>
+              </ul>
             </div>
-            <div className="flex space-x-6">
-              <a href="https://www.instagram.com/navneetranjan07" className="text-blue-100 hover:text-white transition-colors duration-300">
-                <FaInstagram className="w-6 h-6" />
+
+            {/* Centers of Excellence */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-teal-200">Centers of Excellence</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/centers-of-excellence/fortis-institute-of-genomic-medicine" className="text-blue-100 hover:text-white transition-colors duration-300 block">Institute of Genomic Medicine</Link></li>
+                <li><Link to="/centers-of-excellence/fortis-institute-of-robotic-surgery" className="text-blue-100 hover:text-white transition-colors duration-300 block">Institute of Robotic Surgery</Link></li>
+                <li><Link to="/centers-of-excellence/fortis-cancer-institute" className="text-blue-100 hover:text-white transition-colors duration-300 block">Cancer Institute</Link></li>
+                <li><Link to="/centers-of-excellence/centre-for-gynae-oncology" className="text-blue-100 hover:text-white transition-colors duration-300 block">Centre for Gynae Oncology</Link></li>
+              </ul>
+            </div>
+
+            {/* Policies */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-teal-200">Policies</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="https://example.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 block">Privacy Policy</a></li>
+                <li><a href="https://example.com/anti-bribery-policy" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 block">Anti-Bribery Policy</a></li>
+                <li><a href="https://example.com/disclaimer" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 block">Disclaimer</a></li>
+                <li><a href="https://example.com/terms-of-use" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 block">Terms of Use</a></li>
+              </ul>
+            </div>
+
+            {/* Medical Procedures */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-teal-200">Medical Procedures</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/departments/oncology" className="text-blue-100 hover:text-white transition-colors duration-300 block">Cell Therapy</Link></li>
+                <li><Link to="/departments/medical-genetics" className="text-blue-100 hover:text-white transition-colors duration-300 block">Genomic Surgery</Link></li>
+                <li><Link to="/departments/general-surgery" className="text-blue-100 hover:text-white transition-colors duration-300 block">EMO Surgery</Link></li>
+                <li><Link to="/departments/urology" className="text-blue-100 hover:text-white transition-colors duration-300 block">Advanced Urology</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="border-t border-blue-700 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Logo */}
+            <div className="text-2xl font-bold text-teal-200">
+              CityCare
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <FaFacebook className="w-5 h-5" />
               </a>
-              <a href="https://github.com/navneetranjan07" className="text-blue-100 hover:text-white transition-colors duration-300">
-                <FaGithub className="w-6 h-6" />
+              <a href="https://www.instagram.com/navneetranjan07" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <FaInstagram className="w-5 h-5" />
               </a>
-              <a href="https://x.com/NavneetRan93248" className="text-blue-100 hover:text-white transition-colors duration-300">
-                <FaTwitter className="w-6 h-6" />
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <FaYoutube className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/navneet-ranjan-255641275/" className="text-blue-100 hover:text-white transition-colors duration-300">
-                <FaLinkedin className="w-6 h-6" />
+            </div>
+
+            {/* App Downloads */}
+            <div className="flex space-x-4 text-sm">
+              <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+                <span>App Store</span>
+              </a>
+              <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+                <span>Google Play</span>
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-blue-700">
-            <p className="text-blue-100">&copy; {new Date().getFullYear()} CityCare Multispeciality Hospital. All rights reserved.</p>
+
+          {/* Copyright */}
+          <div className="mt-6 flex justify-between pt-4 border-t border-blue-700">
+            <p className="text-blue-100 text-sm text-center">&copy; {new Date().getFullYear()} CityCare Multispeciality Hospital. All rights reserved.</p>
+            <div>
+              <p className="text-blue-100 text-sm text-center">Developed by <a href="https://github.com/navneetranjan07"><span className="text-yellow-400 ">Navneet Ranjan</span> with 💖 in India.</a></p>
+              <p className="text-blue-100 text-sm text-center">Innovative Idea by <a href="hhttps://github.com/nishant0256"><span className="text-yellow-400 ">Nishant Kumar</span> with 💖 in India.</a></p>
+            </div>
           </div>
         </div>
       </footer>

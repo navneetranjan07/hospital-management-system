@@ -7,3 +7,9 @@
 - [x] Adjust table styling to match Patients.jsx (background, borders, etc.)
 - [x] Ensure search, add/edit/delete functionality remains intact
 - [x] Verify the changes work correctly
+
+# TODO: Regenerate Footer in HospitalInfo.jsx
+
+- [x] Update imports in src/pages/HospitalInfo.jsx to include FaFacebook and FaYoutube
+- [x] Replace the entire footer section with the new multi-column layout, adapting links to existing routes
+- [ ] Verify rendering and links (run npm run dev, use browser_action to check)
