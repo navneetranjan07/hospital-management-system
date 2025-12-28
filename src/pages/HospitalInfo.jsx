@@ -358,7 +358,7 @@ export default function HospitalInfo() {
         </button>
 
         {/* ================= SPECIALITIES MEGA MENU ================= */}
-        <div className="absolute left-1/2 -translate-x-44 -translate-y-28 hidden group-hover:block z-[999] pt-4">
+        <div className="absolute left-1/2 -translate-x-20 -translate-y-24 hidden group-hover:block z-[999] pt-4">
           <div className=" bg-white shadow-2xl rounded-xl z-50 p-2">
 
             <div className="flex w-auto gap-5 z-50">
@@ -384,12 +384,12 @@ export default function HospitalInfo() {
                   </div>
                 )
               )}
-
-
             </div>
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 }
