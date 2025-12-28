@@ -62,6 +62,13 @@ import PlasticAndReconstructiveSurgery from "./pages/departments/PlasticAndRecon
 import SupportSpecialities from "./pages/departments/SupportSpecialities";
 import VascularSurgery from "./pages/departments/VascularSurgery";
 
+// centers of excellence
+import FortisInstituteOfRoboticSurgery from "./pages/centersOfExcellence/FortisInstituteOfRoboticSurgery";
+import FortisCancerInstitute from "./pages/centersOfExcellence/FortisCancerInstitute";
+import FortisInstituteOfGenomicMedicine from "./pages/centersOfExcellence/FortisInstituteOfGenomicMedicine";
+import CentreForGynaeOncology from "./pages/centersOfExcellence/CentreForGynaeOncology";
+
+
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -137,6 +144,12 @@ function App() {
 <Route path="/departments/plastic-reconstructive-surgery" element={<PlasticAndReconstructiveSurgery />} />
 <Route path="/departments/support-specialities" element={<SupportSpecialities />} />
 <Route path="/departments/vascular-surgery" element={<VascularSurgery />} />
+
+                  {/* Centers of Excellence */}
+                  <Route path="/centers-of-excellence/fortis-institute-of-robotic-surgery" element={<FortisInstituteOfRoboticSurgery />} />
+                  <Route path="/centers-of-excellence/fortis-cancer-institute" element={<FortisCancerInstitute />} />
+                  <Route path="/centers-of-excellence/fortis-institute-of-genomic-medicine" element={<FortisInstituteOfGenomicMedicine />} />
+                  <Route path="/centers-of-excellence/centre-for-gynae-oncology" element={<CentreForGynaeOncology />} />
                 </Routes>
               </>
             </ProtectedRoute>
